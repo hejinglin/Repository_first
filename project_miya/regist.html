@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>regist</title>
+	</head>
+<!--<link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />-->
+<link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/styleregist.css"/>
+<link rel="stylesheet" type="text/css" href="css/public.css"/>
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+<link rel="stylesheet" type="text/css" href="css/styleregist.css"/>
+
+
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/cookie封装.js"></script>
+<script type="text/javascript" src='js/code.js'></script>
+<script type="text/javascript">
+		$(function(){
+			$('.codeMath').html(Mathcode());
+			var emailflag=false;
+			var passwordflag=false;
+			var passwordAgainflag=false;
+			var phoneflag=false;
+			var codeflag=false;
+			var ruleflag=true;
+			var seturl='http://10.16.151.33/course/api/api/student/Register';
+			//1.判断email是否符合要求
+			$('#email').on('blur',function(){
+				var $this=$(this);
+				emailCheckOut($this);
+
+			})
+			
+			//2.判断密码是否正确
+			$('#password').on('blur',function(){
+				var $this=$(this);
+				passwordCheckOut($this);
+			})
+			
+			//3.第二次密码判断
+			$('#passwordAgain').on('blur',function(){
+				var $this=$(this);
+				passwordAagainCheckOut($this);
+			})
+			//4.电话验证
+			$('#phone').on('blur',function(){
+				var $this=$(this);
+				phoneCheckOut($this)
+			})
+			//5.验证码验证
+			$('#code').blur(function(){
+				var $this=$(this);
+				codeCheckOut($this);
+			})
+			//6.点击改变验证码的状态
+			$('.codeMathText').click(function(){
+				var code=Mathcode();
+				$('.codeMath').html(code);
+			})
+			
+			//7.服务条款的验证
+			$('#checkbox').click(function(){
+				var $this=$(this);
+				ruleCheckOut($this);
+			})
+			
+			//调交表单
+			$('.btn').click(function(evt){
+				//阻止默认跳转
+				evt.preventDefault();
+				console.log(1);
+				if(emailflag&&passwordflag&&passwordAgainflag&&phoneflag&&codeflag&&ruleflag){
+				//1.注册成功则把数据发送给后端,并向后端获取请求
+					if(seturl){
+						$.ajax({
+							type:'post',
+							async:true,
+							url:seturl,
+							data:{'account':$('.username').val(),'password':$('.password').val(),'phone':$('.phone').val(),'username':'何京霖','classes':'1609','mail':'2581110788@qq.com'},
+							success:function(data){
+								console.log('请求成功');
+								var datas=typeof data=='string'?JSON.parse(data):data;
+								console.log(datas);
+							}
+						})
+					}
+
+					//2.注册成功则添加到cookie
+					var d=new Date();
+					d.setDate(d.getDate()+10);
+					setCookie('phone', $('#phone').val(),d);
+					setCookie('password',$('#password').val(),d);
+					
+					var loginflag=confirm('注册成功，点击确定3S后跳入登录界面');
+					if(loginflag){
+						setTimeout(function(){
+							window.location.href='login.html';			
+						},3000)
+					}
+				}else{
+					confirm('注册失败，请重新注册');
+				}
+			})
+			
+				function emailCheckOut($this){
+					//必须以数字字母下划线开头，且最少为8位
+					var patern=/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+					var flag1=patern.test($('#email').val());
+					if(!flag1){
+						$this.prev().css({'display':'block'});
+						console.log('用户名是否正确:'+flag1);	
+						emailflag=false;
+					}else{
+						$this.prev().css({'display':'none'});
+						emailflag=true;
+						console.log('用户名是否正确:'+flag1);
+					}
+				}
+				
+				function passwordCheckOut($this){
+					//必须以数字字母组成，最少为6位,最长为14位
+					var patern=/^[A-Za-z\w]{6,14}$/;
+					var flag2=patern.test($('#password').val());
+					if(!flag2){
+						$this.prev().css({'display':'block'});
+						console.log('密码是否正确:'+flag2);
+						passwordflag=false;
+					}else{
+						$this.prev().css({'display':'none'});
+						passwordflag=true;
+						console.log('密码是否正确:'+flag2);
+					}
+					if($('#passwordAgain').val().length!=0){
+						if($this.val()==$('#passwordAgain').val()){
+							$('#passwordAgain').prev().css({'display':'none'});
+							passwordAgainflag=true;
+							console.log('密码2是否正确:'+flag2);	
+						}else{
+							$('#passwordAgain').prev().html('两次输入的密码不一致').css({'display':'block'});
+							console.log('密码2是否正确:'+flag2);
+						}
+					}
+				}
+				function passwordAagainCheckOut($this){
+	//				console.log(1);
+					//必须以数字字母组成，最少为6位,最长为14位
+					var patern=/^[A-Za-z\w]{6,14}$/;
+					var flag3=patern.test($('#passwordAgain').val());
+					if(!flag3){
+						$this.prev().html('长度为6-14个字符，建议使用字母加数字或符号组合').css({'display':'block'});
+						console.log('密码2是否正确:'+flag3);	
+					}else{
+						if($this.val()==$('#password').val()){
+							$this.prev().css({'display':'none'});
+							passwordAgainflag=true;
+							console.log('密码2是否正确:'+flag3);	
+						}else{
+							$this.prev().html('两次输入的密码不一致').css({'display':'block'});
+							console.log('密码2是否正确:'+flag3);
+							passwordAgainflag=false;
+						}
+					}
+				}
+				
+				function phoneCheckOut($this){
+					//必须以数字字母组成，11位
+					var patern=/^[1-3]\d{10}$/;
+					var flag4=patern.test($('#phone').val());
+					if(!flag4){
+						$this.prev().css({'display':'block'});
+						console.log('您的电话是否正确:'+flag4);	
+						phoneflag=false;
+					}else{
+						$this.prev().css({'display':'none'});
+						phoneflag=true;
+						console.log('您的电话是否正确:'+flag4);
+					}
+				}
+				
+				function codeCheckOut($this){
+					if($('.codeMath').html()==$('#code').val()){
+						$this.prev().hide();
+						codeflag=true;
+						console.log("您的验证码输入："+true);
+					}else{
+						$this.prev().show();
+						console.log("您的验证码输入："+false);
+						codeflag=false;
+					}
+				}
+				
+				function ruleCheckOut($this){
+					if($this.prop('checked')==true){
+						$this.prev().hide();
+						ruleflag=true;
+						console.log("您的验证码输入："+true);
+					}else{
+						$this.prev().show();
+						console.log("您的验证码输入："+false);
+						ruleflag=false;
+					}
+				}
+		})
+</script>
+	<body>
+		<div class="body">
+			<div class="regist">
+					<div class="registTitle clear">
+						<h3 class="fl">注册蜜芽</h3>
+						<div class="login fr">
+							<span class="span1">已有蜜芽帐号?</span><a href="login.html">登录</a>
+						</div>
+					</div>
+				<form>
+					<div class="phone icon">
+						<div class="arrow_box1">请输入正确的手机号码，且为11位纯数字格式</div>
+						<input type="text" placeholder="手机号码" name="phone" id='phone' class="phone padding1" autocomplete="off">
+	<!--					<i class="fa fa-user"></i>-->
+					</div>
+					<div class="code padding1 clear">
+						<div class="arrow_box6">你的验证码输入不匹配</div>
+						<input type="text" placeholder="输入验证码" name="code" id='code' class="codeinput fl" autocomplete="off">
+						<div class="codeMath fl"></div>
+						<div class="codeMathText fl">看不清</div>
+					</div>
+					<div class="emailcon">
+						<div class="arrow_box2">邮箱地址不能为空</div>
+						<input type="text" name="email" id="email" value="" placeholder="请输入邮箱" class="padding1" autocomplete="off"/>
+					</div>
+					<div class="passwordcon">
+						<div class="arrow_box3">长度为6-14个字符，建议使用字母加数字或符号组</div>		
+						<input type="password" placeholder="密码" name="password" id='password' class="padding1" autocomplete="off"></br>
+					</div>
+					<div class="passwordAgaincon">
+						<div class="arrow_box4">长度为6-14个字符，建议使用字母加数字或符号组合</div>
+						<input type="password" placeholder="确认密码" name="confirmpassword" id='passwordAgain' class="passwordAagin padding1" autocomplete="off"><br>
+					</div>
+					<div class="checkbox">
+						<div class="arrow_box5">您未阅读并接受蜜芽服务条款</div>
+						<input type="checkbox" name="checkbox" id="checkbox" value="" checked="checked"/>
+						<span class="rule"><em>我已阅读并接受</em><em class="em2">&laquo;蜜芽服务条款&raquo;</em></span>
+					</div>
+			
+					<input type="submit" value="注册" class="btn">
+				</form>	
+			</div>
+		</div>
+	</body>
+</html>

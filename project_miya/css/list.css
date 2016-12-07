@@ -1,0 +1,175 @@
+.main{
+	background: #f2f2f0;
+}
+.dried_fruit{
+	margin:0 auto;
+	width:1100px;
+	min-height: 2500px;
+	height:auto !important;
+	height:2500;
+	overflow: hidden;
+}
+.dried_fruitlist ul li a{
+	cursor: pointer;
+	color:#222222;
+}
+.dried_fruitlist ul li:hover a{
+	color: #fa4b9b;
+}
+.goodclassify{
+	margin-top:35px;
+	margin-bottom:20px;
+	font-size:12px;
+	color: #666666;
+}
+.goodclassify .sign{
+	padding:0 5px;
+}
+.dried_fruitlist{
+	padding:0 16px 0 14px;
+	overflow:hidden;
+	width:1070px;
+	height:122px;
+	background: #FFFFFF;
+}
+.dried_fruitlist ul li{
+	font-size:12px;
+	line-height:40px;
+	float:left;
+	padding-right:30px;
+	color:#222222;
+}
+.dried_fruitlist ul li.first{
+	color:#999999;
+	padding-right:30px;
+}
+.dried_fruitlist .bander,.dried_fruitlist .place,.dried_fruit .price{
+/*	width:1170px;*/
+	height:40px;
+	margin:0 auto;
+	border-bottom:1px dashed #ececec;
+	padding-left:36px;
+	
+}
+
+.sort {
+	margin-top:11px;
+	margin-bottom:11px;
+	width:1100px;
+	height:45px;
+	background:#FFFFFF;
+	line-height:45px;
+	font-size:12px;
+	color:#666666;
+}
+.sortleft ul li{
+	float:left;
+}
+.sort .pink{
+	color:#f550a2;
+}
+.sortleft ul li.text{
+	padding:0 25px;
+	border-right:1px solid #ededed; 
+}
+
+.interval input{
+	width:50px;
+	height:18px;
+	border:1px solid #b1b1b1;
+	outline: none;
+	color:#c6c6bb;
+	font-size:12px;
+}
+
+.content{
+	height:20px;
+	width:17px;
+	text-align:center;
+	line-height: 20px;
+}
+.sortleft ul li.interval{
+	padding:11px 16px 11px 10px;
+	border-right:1px solid #ededed; 
+}
+.sortleft ul li.showreserve input{
+	vertical-align:middle;
+	margin:0 10px 0 26px;
+}
+.sortright{
+	padding-right:16px;
+}
+
+.goodsList{
+	margin:0 auto;
+	width:1100px;	
+/*	background:pink;*/
+}
+.goodsList .good1{
+	margin:12px 10px 0 0;
+	background: #FFFFFF;
+	width:267px;
+	height:370px;
+	float:left;
+}
+.good1 dl{
+	width:265px;
+	height:368px;
+	border:1px solid #FFFFFF;
+}
+.good1 dl dt{
+	width:265px;
+	height:265px;
+}
+.good1 dl dt img{
+	width:265px;
+	height:265px;
+}
+.good1 dl dd{
+	width:246px;
+	height:104px;
+	padding:0 10px;
+}
+.good1 dl dd .good1price{
+	padding-top:19px;
+	font-size:18px;
+	line-height:18px;
+}
+.good1price span.sign{
+	font-size:12px;
+	color:#f450aa;
+	float: left;
+}
+.good1price span.newprice{
+	font-weight:900;
+	font-size:18px;
+	color:#f450aa;
+	float: left;
+}
+.good1price em.oldprice{
+	text-decoration: line-through;
+	font-size:10px;
+	color:#888896;
+	float:right;
+}
+.good1 .good1produce{
+	padding-top:12px;
+	font-size:12px;
+	color:#666666;
+}
+.good1produce span{
+	font-weight: 300;
+	color:#f450a2;
+}
+
+.btn{
+	text-align: center;
+	width:1100px;
+	margin:20px auto;
+}
+.btn span{
+		 cursor: pointer;
+		  padding: 5px 10px;
+		  background-color: #FFFFFF;
+		  margin-right: 5px;
+		}

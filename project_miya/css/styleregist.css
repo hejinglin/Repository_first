@@ -1,0 +1,182 @@
+	body{
+		height:811px;
+		background: url(../img/registbg.png);
+		background-size: cover;
+	}
+	.body{
+		margin:0 auto;
+		width:980px;
+		height:811px;
+		position:relative;
+	}
+	.regist{
+		padding-left:22px;
+		padding-right:20px;
+		position: absolute;
+		right:0;
+		top:122px;
+		width:306px;
+		height:478px;
+		border:1px solid #f7f7f7;
+		overflow: hidden;
+	}
+
+	.registTitle{
+		margin-top:24px;
+		margin-bottom: 34px;
+		width:306px;
+		height:20px;
+		line-height:20px;
+		font-size:12px;
+	}
+	.registTitle h3{
+		font-size:20px;
+		color:#f450a2;
+	}
+	.registTitle .span1{
+		color:#f450a2;
+		padding-right:9px;
+		font-size:12px;
+		
+	}
+	.registTitle a{
+		cursor: pointer;
+	}
+	.registTitle a:hover{
+		color:#f450a2;
+	}
+	.padding1{
+		margin-bottom: 17px;
+	}
+	form input{
+		width:304px;
+		height:38px;
+		line-height:38px;
+		border:1px solid #cfcfcf;
+		outline: none;
+	}
+	.checkbox{
+		margin-top:17px;
+		cursor: pointer;
+	}
+	.checkbox input{
+		width:12px;
+		height:12px;
+		line-height:0px;
+/*		margin-right:3px;*/
+	}
+	.rule em{
+		font-size:14px;
+		color:#a9a9a9;
+	}
+	.rule .em2{
+		padding-left:9px;
+		font-size:14px;
+		color:#f450a2;
+	}
+	.btn{
+		cursor: pointer;
+		width:304px;
+		font-weight: bold;
+		color:#ffffff;
+		margin-top:29px;
+		background: #f450a2;
+		border-radius: 5px;
+		text-align:center;
+	}
+	
+	#phone{
+		background: url(../img/images/1_03.jpg) no-repeat center left;
+		text-indent: 38px;
+	}
+	#email{
+		background: url(../img/images/1_03.jpg) no-repeat center left;
+		text-indent: 38px;
+	}
+	#password,#passwordAgain{
+		background: url(../img/images/1_08.jpg) no-repeat center left;
+		text-indent: 38px;
+	}
+	#code{
+		margin-right:12px;
+		width:106px;
+		text-indent: 9px;
+	}
+	.codeMath{
+		font-size:20px;
+		text-align: center;
+		width:90px;
+		height:35px;
+		line-height:35px;
+/*		position:absolute;*/
+		background:url(../img/images/codebg.jpg);
+		margin-right:4px;
+	}
+	.codeMathText{
+		cursor: pointer;
+		height:35px;
+		line-height:35px;
+	}
+/*	隐藏的css冒泡样式*/
+	.arrow_box1,.arrow_box2,.arrow_box3,.arrow_box4,.arrow_box5,.arrow_box6 {
+		font-size:12px;
+/*		position:absolute;*/
+		left:22px;
+		top:44px;
+		text-align:center;
+		width:280px;
+		height:20px;
+		line-height:20px;
+		position: absolute;
+		background: #FFFFFF;
+		border: 2px solid pink;
+		border-radius: 5px;
+	}
+	.arrow_box1{
+		top:44px;
+		display: none;
+	}
+	.arrow_box2{
+		top:159px;
+		display: none;
+	}
+	.arrow_box3{
+		display: none;
+		top:214px;
+	}
+	.arrow_box4{
+		display: none;
+		top:271px;
+	}
+	.arrow_box5{
+		display: none;
+		top:350px;
+	}
+	.arrow_box6{
+		display: none;
+		top:118px;
+	}
+	
+	.arrow_box1:after,.arrow_box2:after,.arrow_box3:after,.arrow_box4:after,.arrow_box5:after,.arrow_box6:after, .arrow_box1:before ,.arrow_box2:before ,.arrow_box3:before ,.arrow_box4:before,.arrow_box5:before,.arrow_box6:before{
+		top: 100%;
+		left: 10%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+	
+	.arrow_box1:after,.arrow_box2:after,.arrow_box3:after,.arrow_box4:after,.arrow_box5:after,.arrow_box6:after {
+		border-color: rgba(213, 200, 183, 0);
+		border-top-color: #FFFFFF;
+		border-width: 5px;
+		margin-left: -5px;
+	}
+	.arrow_box1:before ,.arrow_box2:before ,.arrow_box3:before ,.arrow_box4:before,.arrow_box5:before,.arrow_box6:before{
+		border-color: rgba(245, 202, 191, 0);
+		border-top-color: pink;
+		border-width: 11px;
+		margin-left: -11px;
+	}

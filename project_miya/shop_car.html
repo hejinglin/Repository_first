@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+<!--css文件-->
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/header.css"/>
+	<link rel="stylesheet" type="text/css" href="css/shop_car.css"/>
+<!--js文件	-->	
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/cookie封装.js"></script>
+	<script type="text/javascript">
+			$(function(){
+				$('.footerload').load('footer.html');
+				//获取相同的cookie名字
+				var goodsrc="goodsrc";
+				var goodname="goodname";
+				var postcode="postcode";
+				var goodstandard="goodstandard";
+				var goodnewprice="goodnewprice";
+				var goodoldprice="goodoldprice";
+				var goodnumber="goodnumber";
+				//把这些名字的cookie读取出来
+				var goodsrcStr=getCookie(goodsrc);
+				var goodnameStr=getCookie(goodname);
+				var postcodeStr=getCookie(postcode);
+				var goodstandardStr=getCookie(goodstandard);
+				var goodnewpriceStr=getCookie(goodnewprice);
+				var goodoldpriceStr=getCookie(goodoldprice);
+				var goodnumberStr=getCookie(goodnumber);
+				//如果存在，把他们拆分成数组
+				if(goodnameStr){
+					//有信息则把字符串变换成数组
+					var goodsrcArr=goodsrcStr.split("&");
+					var goodnameArr=goodnameStr.split("&");
+					var postcodeArr=postcodeStr.split("&");
+					var goodstandardArr=goodstandardStr.split("&");
+					var goodnewpriceArr=goodnewpriceStr.split("&");
+					var goodoldpriceArr=goodoldpriceStr.split("&");
+					var goodnumberArr=goodnumberStr.split("&");
+					//遍历这些信息
+					for(var i=0;i<goodnameArr.length;i++){
+	//					var content_text='<div class="shop_content clear"><div class="inputwarp fl"></div><div class="shop_contentpicture fl" style="background: url(img/shop_car_img/shop_carpicture.jpg) no-repeat; background-size: cover;"></div><div class="shop_contentdecrip fl"><p class="p1">西域美农 大白杏干休闲零食250g 无添加</p><p class="p2">商品编号：1255366</p></div><div class="shop_starde fl">250g</div><div class="shop_price fl"><p class="p1">18.00</p><p class="p2">36.00</p></div><div class="shop_number clear fl"><div class="clear"><span class="sub fl">-</span><span class="num fl">1</span><span class="add fl">+</span></div></div><div class="shop_totalprice fl">￥18</div><div class="delete fl">删除</div></div>'
+						var content_text='<div class="shop_content clear"><div class="inputwarp content_inputwarp fl"></div><div class="shop_contentpicture fl" style="background: url('+goodsrcArr[i]+') no-repeat; background-size: cover;"></div><div class="shop_contentdecrip fl"><p class="p1">'+goodnameArr[i]+'</p><p class="p2">商品编号：'+postcodeArr[i]+'</p></div><div class="shop_starde fl">'+goodstandardArr[i]+'</div><div class="shop_price fl"><p class="p1">'+goodnewpriceArr[i]+'</p><p class="p2">'+goodoldpriceArr[i]+'</p></div><div class="shop_number clear fl"><div class="clear"><span class="sub fl">-</span><span class="num fl">'+goodnumberArr[i]+'</span><span class="add fl">+</span></div></div><div class="shop_totalprice fl">￥'+goodnumberArr[i]*goodnewpriceArr[i]+'</div><div class="delete fl">删除</div></div>'
+						$('.allof_content').append(content_text);
+					}
+				}
+				//实现删除功能
+				$delete=$('.shop_content .delete');
+				$delete.click(function(){
+//					console.log($delete.index($(this)));
+					//1.获取需要删除元素的下标
+					var index=$delete.index($(this));
+					//2.把下标为index的值的样式从页面删除
+					$(this).parent().remove();
+					//3.删除页面中的cookie
+					//1）删除下标为index的数组中的值
+					goodsrcArr.splice(index,1);
+					goodnameArr.splice(index,1);
+					postcodeArr.splice(index,1);
+					goodstandardArr.splice(index,1);
+					goodnewpriceArr.splice(index,1);
+					goodoldpriceArr.splice(index,1);
+					goodnumberArr.splice(index,1);
+					console.log(goodnameArr);
+					//2）.把这些数组变成字符串
+					var temp_goodsrcStr=goodsrcArr.join('&');
+					var temp_goodnameStr=goodnameArr.join('&');
+					var temp_postcodeStr=postcodeArr.join('&');
+					var temp_goodstandardStr=goodstandardArr.join('&');
+					var temp_goodnewpriceStr=goodnewpriceArr.join('&');
+					var temp_goodoldpriceStr=goodoldpriceArr.join('&');
+					var temp_goodnumberStr=goodnumberArr.join('&');
+					//3）把这些字符串存入新的cookie,并让他覆盖前一个
+					var d=new Date();
+					d.setDate(d.getDate()+7);
+					setCookie('goodsrc',temp_goodsrcStr,d);
+					setCookie('goodname',temp_goodnameStr,d);
+					setCookie('postcode',temp_postcodeStr,d);
+					setCookie('goodstandard',temp_goodstandardStr,d);
+					setCookie('goodnewprice',temp_goodnewpriceStr,d);
+					setCookie('goodoldprice',temp_goodoldpriceStr,d);
+					setCookie('goodnumber',temp_goodnumberStr,d);
+				})
+				//实现全选功能
+//				var flag_allselect=false;
+//				var flag_single=false;
+				$('.allof_select').click(function(){
+					this.flag_allselect=!this.flag_allselect;
+					if(this.flag_allselect){
+						$('.inputwarp').css({'background':'url(img/shop_car_img/shop_car_cheacked.png) no-repeat 0 -178px'});
+						for(var i=0;i<$('.content_inputwarp').length;i++){
+							$('.content_inputwarp').eq(i)[0].flag_single=true;
+						}
+						
+					}else{
+						$('.inputwarp').css({'background':'url(img/shop_car_img/shop_car_cheacked.png) no-repeat 0  0'});
+						for(var i=0;i<$('.content_inputwarp').length;i++){
+							$('.content_inputwarp').eq(i)[0].flag_single=false;
+						}
+					}
+					judge();
+				})
+				$('.content_inputwarp').click(function(){
+					this.flag_single=!this.flag_single;
+//					console.log(this.flag_single);
+					console.log(1);
+					if(this.flag_single){
+						$(this).css({'background':'url(img/shop_car_img/shop_car_cheacked.png) no-repeat 0 -178px'});	
+					}else{
+						$(this).css({'background':'url(img/shop_car_img/shop_car_cheacked.png) no-repeat 0  0'});	
+					}
+					judge();
+				})
+				function judge(flag){
+					console.log(2);
+					$.each($('.content_inputwarp'),function(index,val){
+						if(val.flag_single==true){
+							console.log(3);
+							$('.Go_account').css({'background':'#fa4b9b'});
+							return;
+						}else{
+							$('.Go_account').css({'background':'#666666'});
+						}
+					})
+				}
+				
+				//实现加减按钮功能
+				$('.shop_number .add').on('click',$('.num'),function(){
+					if(parseInt($('.shop_number span.num').html())==99){
+						return false;
+					}
+					this.num=parseInt($('.shop_number span.num').html())+1
+					$('.shop_number span.num').text(this.num);
+					single_totalnum(this.num)
+				})
+				
+				$('.shop_number .sub').click(function(){
+					if(parseInt($('.shop_number span.num').html())==1){
+						return false;
+					}
+					this.num=parseInt($('.shop_number span.num').html())-1
+					$('.shop_number span.num').html(this.num);
+					single_totalnum(this.num)
+				})
+				
+				function single_totalnum(num){
+					$('.shop_totalprice').text(num*$('.shop_price .p1').text());
+				}
+
+			})
+	</script>
+
+	<body>
+		<div class="main">
+<!--			header开始-->
+			<div id="header_wrap">
+				<div class="header clear">
+					<div class="headerleft fl">
+						<div class="phoneversionbg"></div>
+						<div class="phoneversion">
+							<a>手机蜜牙</a>
+						</div>
+					</div>
+					<div class="headerright fr">
+						<ul class="clear">
+							<li>你好，欢迎来到蜜芽！</li>
+							<li><span class="login1"><a>登录</a></span><em><a>免费注册</a></em></li>
+							<li class="last"><a>帮助中心</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+<!--			header结束-->
+			<div class="#shoping_car">
+				<div class="shopping_car">
+					<div class="shoping_car_header clear">
+						<div class="shoping_car_headerleft fl"></div>
+						<div class="shoping_car_headerright fr"></div>
+					</div>
+					
+					<div class="our_shopping_car">
+						<h3>我的购物车</h3>
+						<div class="our_shopping_car_title clear">
+							<div class="allselect fl">
+								<div class="inputwarp allof_select"></div>
+								<label>全选</label>
+							</div>
+							<div class="fl">
+								<ul class="clear">
+									<li class="first">商品</li>
+									<li>规格</li>
+									<li>单价</li>
+									<li>数量</li>
+									<li>小计</li>
+									<li class="last">操作</li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="shop_name">
+							<div class="inputwarp"></div>
+							<span>西域美农旗舰店</span>
+						</div>
+						
+						<div class="allof_content">
+	<!--						内容区域-->
+							<!--<div class="shop_content clear">
+								<div class="inputwarp fl"></div>
+								<div class="shop_contentpicture fl" style="background: url(img/shop_car_img/shop_carpicture.jpg) no-repeat; background-size: cover;"></div>
+								<div class="shop_contentdecrip fl">
+									<p class="p1">西域美农 大白杏干休闲零食250g 无添加</p>
+									<p class="p2">商品编号：1255366</p>
+								</div>
+								<div class="shop_starde fl">
+									250g
+								</div>
+								<div class="shop_price fl">
+									<p class="p1">18.00</p>
+									<p class="p2">36.00</p>
+								</div>
+								
+								<div class="shop_number clear fl">
+									<div class="clear"><span class="sub fl">-</span><span class="num fl">1</span><span class="add fl">+</span></div>
+								</div>
+								<div class="shop_totalprice fl">
+									￥18
+								</div>
+								<div class="delete fl">删除</div>	
+							</div>-->
+						</div>
+<!--						内容区域结束-->
+						<div class="account clear">
+							<div class="allselect2 fl">
+								<div class="inputwarp allof_select"></div>
+								<label>全选</label>
+							</div>
+							<div class="shop_car_function fl">
+								<ul class="clear">
+									<li>删除选择商品</li>
+									<li>清除无效商品</li>
+									<li>移入收藏夹</li>
+								</ul>
+							</div>
+							<div class="number_and_total fl">
+								<div class="number_and_total_text">
+									已选择商品 <span class="pinktext">0</span>件合计（不含运费和进口税）:<em class="pinktext">¥0</em>
+								</div>
+							</div>
+							<div class="Go_account fr">
+								去结算
+							</div>
+							
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!--导入footer-->
+			<div class="footerload"></div>
+		</div>
+
+	</body>
+</html>

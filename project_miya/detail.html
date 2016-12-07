@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+<!--css文件-->
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/detail.css"/>
+	
+<!--js文件	-->	
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/cookie封装.js"></script>
+	<script type="text/javascript">
+		$(function(){
+//创建储存商品cookie的数组
+				//创建需要存储商品的名字
+				var goodsrc="goodsrc";
+				var goodname="goodname";
+				var postcode="goodpostcode";
+				var goodstandard="goodstandard";
+				var goodnewprice="goodnewprice";
+				var goodoldprice="goodoldprice";
+				var goodnumber="goodnumber";
+				//创建存储商品信息的各个数组
+				var goodsrcArr=[];
+				var goodnameArr=[];
+				var postcodeArr=[];
+				var goodstandardArr=[];
+				var goodnewpriceArr=[];
+				var goodoldpriceArr=[];
+				var goodnumberArr=[];
+				//读取之前的cookie 看有没有存储过信息
+				var goodsrcStr=getCookie("goodsrc");
+				var goodnameStr=getCookie("goodname");
+				var postcodeStr=getCookie("goodpostcode");
+				var goodstandardStr=getCookie("goodstandard");
+				var goodnewpriceStr=getCookie("goodnewprice");
+				var goodoldpriceStr=getCookie("goodoldprice");
+				var goodnumberStr=getCookie("goodnumber");
+				if(goodnameStr){
+					//有信息则把字符串变换成数组
+					var goodsrcArr=goodsrcStr.split("&");
+					var goodnameArr=goodnameStr.split("&");
+					var postcodeArr=postcodeStr.split("&");
+					var goodstandardArr=goodstandardStr.split("&");
+					var goodnewpriceArr=goodnewpriceStr.split("&");
+					var goodoldpriceArr=goodoldpriceStr.split("&");
+					var goodnumberArr=goodnumberStr.split("&");
+				}
+				
+			//引入头部尾部，及广告文件
+			$('.headerload').load('header.html',function(){
+//				$('.allproduct').css({});
+				$('.allclassify').find('i').css('display','inline-block');
+				
+				$('.allclassify').mouseenter(function(){
+					$('.allproduct').show().stop();
+				})
+				$('.allclassify').mouseleave(function(){
+					$('.allproduct').hide().stop();
+				})
+
+				$('.allproduct').mouseenter(function(){
+					$('.allproduct').show().stop();
+				})
+				$('.allproduct').mouseleave(function(){
+					$('.allproduct').hide().stop();
+				})
+				
+				//购物车按钮的动画效果
+				$('.add_buycar').click(function(){
+//					console.log(1);
+					var $shoppingText=$('.shoppingText');
+					var $add_buycar=$('.add_buycar');
+					var $clone_add_buycar=$add_buycar.clone();
+					//把克隆的图片写入样式中
+					$clone_add_buycar.text('商品已加入购物车').css({'position':'absolute','top':$add_buycar.offset().top,'left':$add_buycar.offset().left}).appendTo('body');
+					//复制商品图片用于实现动画
+					setTimeout(function(){
+						$clone_add_buycar.animate({'left':$shoppingText.offset().left,'top':($shoppingText.offset().top+$shoppingText.outerHeight()),'opacity':0},function(){
+							//删除动画图片
+							$(this).remove();
+							$shoppingText.find('span').html(parseInt($shoppingText.find('span').text())+parseInt($('.num').text())).css({'visibility':'visible'});
+							addCookie();
+						})
+
+					},2000)
+					
+				})
+
+				
+			});
+			$('.footerload').load('footer.html');
+			$('.ourAdvertisement').load('ourAdvertisement.html');
+			$('.switchover').load('html/content1.html');
+			//1.实现鼠标点击切换图片
+			var $bigli=$('.picturebox ul li');
+			var $smallli=$('.picturebox_small ul li');
+//			console.log($smallli.length)
+			for(var i=0;i<$smallli.length;i++){	
+				$smallli.eq(i)[0].index=i;
+				$smallli.eq(i).mouseenter(function(){
+					console.log(1);
+					//让自己的框选中
+					$smallli.css({'border':'1px solid #f7f7f7'});
+					$(this).css({'border':'1px solid #f450a2'});
+					var index=$(this)[0].index;
+					$bigli.css({'z-index':'0'});
+					$bigli.eq(index).css({'z-index':'1'});
+				})
+			}
+			//2.实现可选框切换
+				$('.multiselecte ul li').click(function(){
+					$('.multiselecte ul li').removeClass('first').stop().find('span').removeClass('true');
+					$(this).addClass('first').stop().find('span').addClass('true');
+				})
+			//规格可选
+				var clickflag=false 
+				$('.standardbox').hover(function(){
+					if(!clickflag){
+						$(this).css({'border':'1px solid #f10280'});
+					}
+					$(this).css({'color':'#f450a2'});
+				},function(){
+					if(!clickflag){
+						$(this).css({'border':'1px solid #b3b3b3'});
+					}
+					$(this).css({'color':'#666666'});
+				})
+				$('.standardbox').click(function(){
+					$(this).find('span').addClass('true');
+					$(this).css({'border':'2px solid #f10280','color':'#f450a2'});
+					clickflag=true;
+				})
+			//实现加减按钮功能
+			$('.number .add').click(function(){
+				if(parseInt($('.num').text())==99){
+					return false;
+				}
+				var num=parseInt($('.num').text())+1
+				$('.num').text(num);
+			})
+			
+			$('.number .sub').click(function(){
+				if(parseInt($('.num').text())==1){
+					return false;
+				}
+				var num=parseInt($('.num').text())-1
+				$('.num').text(num);
+			})
+			//实现导航栏的固定定位
+			$(document).scroll(function(){
+//				console.log($(document).scrollTop());
+//				console.log($('.ourdetail').offset().top);
+				if($(document).scrollTop()>=$('.ourdetail').offset().top){
+//					console.log(true);
+					$('.ourdetailnav').css({'position':'fixed','top':0,'left':$('.ourdetail').offset().left});
+				}else{
+					$('.ourdetailnav').css({'position':'static'});
+				}
+			})
+			//点击商品详情导航按钮的切换按钮实现切换
+				$('.ourdetailnav .comment_nav').click(function(){
+					$('.switchover').empty().load('html/comment.html');
+				})
+				$('.ourdetailnav .content1_nav').click(function(){
+					$('.switchover').empty().load('html/content1.html');
+				})
+				
+				$('.ourdetailnav ul li').click(function(){
+					$('.ourdetailnav ul li').css({'background':'#ff3b93'});
+					$(this).css({'background':'#ec0871'});
+				})
+			//addcookie 函数
+			function addCookie(){
+				var _goodsrc=$('.picturebox ul li.first img')[0].src;
+				var _goodname=$('.productdetail h1').text();
+				var _postcode=$('.business_information .codding .codding_number').text();
+				var _goodstandard=$('.standard .standardbox').text();
+				var _goodnewprice=$('.money .newprice').text();
+				var _goodoldprice=$(".money .oldprice").text();
+				var _goodnumber=$(".numberbox span.num").text();
+				//保存进cookie
+				savecookie(_goodsrc,_goodname,_postcode,_goodstandard,_goodnewprice,_goodoldprice,_goodnumber)
+			}
+			function savecookie(_goodsrc,_goodname,_postcode,_goodstandard,_goodnewprice,_goodoldprice,_goodnumber){
+				//遍历cookie数组，如果存在相同的名字则不进行添加，让商品数量累加
+				for(var i=0;i<goodnameArr.length;i++){
+					if(_goodname==goodnameArr[i]){
+						//替换goodnumber的值
+						return;
+					}
+				}
+				goodsrcArr.push(_goodsrc);
+				goodnameArr.push(_goodname);
+				postcodeArr.push(_postcode);
+				goodstandardArr.push(_goodstandard);
+				goodnewpriceArr.push(_goodnewprice);
+				goodoldpriceArr.push(_goodoldprice);
+				goodnumberArr.push(_goodnumber);
+				//1.把这些数组变成字符串
+				var temp_goodsrcStr=goodsrcArr.join('&');
+				var temp_goodnameStr=goodnameArr.join('&');
+				var temp_postcodeStr=postcodeArr.join('&');
+				var temp_goodstandardStr=goodstandardArr.join('&');
+				var temp_goodnewpriceStr=goodnewpriceArr.join('&');
+				var temp_goodoldpriceStr=goodoldpriceArr.join('&');
+				var temp_goodnumberStr=goodnumberArr.join('&');
+				console.log(temp_goodsrcStr);
+				console.log(temp_postcodeStr);
+				console.log(temp_goodstandardStr);
+				//2.存进cookie
+				var d=new Date();
+				d.setDate(d.getDate()+7);
+				setCookie('goodsrc',temp_goodsrcStr,d);
+				setCookie('goodname',temp_goodnameStr,d);
+				setCookie('postcode',temp_postcodeStr,d);
+				setCookie('goodstandard',temp_goodstandardStr,d);
+				setCookie('goodnewprice',temp_goodnewpriceStr,d);
+				setCookie('goodoldprice',temp_goodoldpriceStr,d);
+				setCookie('goodnumber',temp_goodnumberStr,d);
+			}
+		})
+	</script>
+	<body>
+		<div class="main">
+			<!--引入头部文件-->
+				<div class="headerload"></div>
+				<div class="ourAdvertisement"></div>
+				<div class="dried_fruit_detail">
+					<h2>蜜芽首页 > 食品-干果/果干 > 西域美农 大白杏干休闲零食250g 无添加</h2>
+					<div class="dried_fruit_product clear">
+						<div class="productpicture fl">
+							<div class="picturebox">
+								<ul>
+									<li class="first"><img src="img/detailimg/detail_big1.jpg" id="img1"/></li>
+									<li><img src="img/detailimg/detail_big2.jpg" id="img2"/></li>
+									<li><img src="img/detailimg/detail_big3.jpg" id="img3" /></li>
+									<li><img src="img/detailimg/detail_big4.jpg" id="img4"/></li>
+									<li><img src="img/detailimg/detail_big5.jpg" id="img5"/></li>
+								</ul>
+							</div>
+							<div class="picturebox_small">
+								<ul class="clear">
+									<li class="first"><img src="img/detailimg/detail_big1.jpg"/></li>
+									<li><img src="img/detailimg/detail_big2.jpg"/></li>
+									<li><img src="img/detailimg/detail_big3.jpg"/></li>
+									<li><img src="img/detailimg/detail_big4.jpg"/></li>
+									<li class="last"><img src="img/detailimg/detail_big5.jpg"/></li>
+								</ul>
+							</div>
+						</div>
+						<div class="productdetail fr">
+							<div class="product_detail">
+								<div class="productdetail_header clear">
+									<h1 class="fl title">西域美农 大白杏干休闲零食250g 无添加</h2>
+									<div class="share fr">
+										<ul class="clear">
+											<li><img src="img/detailimg/share_01.jpg"/></li>
+											<li><img src="img/detailimg/share_02.jpg"/></li>
+										</ul>
+									</div>	
+								</div>
+								
+								<p class="text"><span>开胃零食，妈妈宝宝吃不停 </span>杏核薄，杏仁大，一杏两吃。无任何添加剂防腐剂，天然晾晒，营养健康。</p>
+								
+								<div class="productprice clear">
+									<h4 class="fl">售价</h4>
+									<div class="money fl"><span class="newsign">￥</span><span class="newprice">18.00</span><span class="oldsign">￥</span><span class="oldprice">36.00</span></div>
+								</div>
+								
+								<div class="multiselecte">
+									<h4 class="fl">可选</h4>
+									<div class="fl">
+										<ul class="clear">
+											<li class="first"><img src="img/detailimg/selected1.jpg"/><span class="true"></span></li>
+											<li><img src="img/detailimg/selected2.jpg"/><span></span></li>
+										</ul>
+									</div>
+
+								</div>
+								
+								<div class="standard clear">
+									<h4 class="fl">规格</h4>
+									<div class="fl standardbox">250g<span></span></div>
+								</div>
+								
+								<div class="number clear">
+									<h4 class="fl">数量</h4>
+									<div class="fl numberbox">
+										<div class="clear"><span class="sub">-</span><span class="num">1</span><span class="add">+</span></div>
+									</div>
+								</div>
+								
+								<div class="grade">
+									<h4 class="fl">评分</h4>
+									<div class="grader_star fl">
+										<ul class="clear">
+											<li><img src="img/detailimg/star.jpg"/></li>
+											<li><img src="img/detailimg/star.jpg"/></li>
+											<li><img src="img/detailimg/star.jpg"/></li>
+											<li><img src="img/detailimg/star.jpg"/></li>
+											<li><img src="img/detailimg/star.jpg"/></li>
+										</ul>
+									</div>	
+									<div class="gradetext fl"><span>78位</span><em>蜜粉推荐</em></div>
+								</div>
+								
+								<div class="add_buycar_And_Collecte clear">
+									<div class="add_buycar fl">加入购物车</div>
+									<div class="Collecte fl">收藏</div>
+								</div>
+								
+								<div class="business_information">
+									<p class="codding"><span class="codename">编码</span><span class="codding_number">1255366</span></p>
+									<p>此商品由西域美农旗舰店进行发货</p>
+									<div class='provente'>
+										<ul class="clear">
+											<li>满88包邮</li>
+											<li>商家发货</li>
+											<li>支持14天无理由退货</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+<!--					其他产品展示开始-->
+					<div class="linebg"></div>
+					<div class="otherproduct clear">
+						<dl>
+							<dt class="otherproductpicture"><img src="img/detailimg/otherproduct1.jpg"/></dt>
+							<dd>
+								<p>"西域美农 土耳其无核杏干250g 无添加零食原"</p>
+								<div class="otherproductprice">￥34.00</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt class="otherproductpicture"><img src="img/detailimg/otherproduct2.jpg"/></dt>
+							<dd>
+								<p>"西域美农 土耳其无核杏干250g 无添加零食原"</p>
+								<div class="otherproductprice">￥34.00</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt class="otherproductpicture"><img src="img/detailimg/otherproduct3.jpg"/></dt>
+							<dd>
+								<p>"西域美农 土耳其无核杏干250g 无添加零食原"</p>
+								<div class="otherproductprice">￥34.00</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt class="otherproductpicture"><img src="img/detailimg/otherproduct4.jpg"/></dt>
+							<dd>
+								<p>"西域美农 土耳其无核杏干250g 无添加零食原"</p>
+								<div class="otherproductprice">￥34.00</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt class="otherproductpicture"><img src="img/detailimg/otherproduct5.jpg"/></dt>
+							<dd>
+								<p>"西域美农 土耳其无核杏干250g 无添加零食原"</p>
+								<div class="otherproductprice">￥34.00</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt class="otherproductpicture"><img src="img/detailimg/otherproduct6.jpg"/></dt>
+							<dd>
+								<p>"西域美农 土耳其无核杏干250g 无添加零食原"</p>
+								<div class="otherproductprice">￥34.00</div>
+							</dd>
+						</dl>
+					</div>
+<!--					其他产品展示结束-->
+<!--				商品详情介绍和最近浏览的相关商品开始-->
+					<div class="recentlysee_And_ourdetail clear">
+						<div class="recentlysee fl">
+							<h3>看了又看</h3>
+							<div class="recentlysee_content">
+								<dl class="clear">
+									<dt><img src="img/detailimg/rencentlysee1.jpg"/></dt>
+									<dd>
+										<p>"绿宝石葡萄干250g 无添加"</p>
+										<div class="otherproductprice">¥25.00</div>
+									</dd>
+								</dl>
+								<dl class="clear">
+									<dt><img src="img/detailimg/rencentlysee2.jpg"/></dt>
+									<dd>
+										<p>"绿宝石葡萄干250g 无添加"</p>
+										<div class="otherproductprice">¥25.00</div>
+									</dd>
+								</dl>
+								<dl class="clear">
+									<dt><img src="img/detailimg/rencentlysee3.jpg"/></dt>
+									<dd>
+										<p>"绿宝石葡萄干250g 无添加"</p>
+										<div class="otherproductprice">¥25.00</div>
+									</dd>
+								</dl>
+								<dl class="clear">
+									<dt><img src="img/detailimg/rencentlysee4.jpg"/></dt>
+									<dd>
+										<p>"绿宝石葡萄干250g 无添加"</p>
+										<div class="otherproductprice">¥25.00</div>
+									</dd>
+								</dl>
+								<dl class="clear">
+									<dt><img src="img/detailimg/rencentlysee5.jpg"/></dt>
+									<dd>
+										<p>"绿宝石葡萄干250g 无添加"</p>
+										<div class="otherproductprice">¥25.00</div>
+									</dd>
+								</dl>
+								<dl class="clear">
+									<dt><img src="img/detailimg/rencentlysee6.jpg"/></dt>
+									<dd>
+										<p>"绿宝石葡萄干250g 无添加"</p>
+										<div class="otherproductprice">¥25.00</div>
+									</dd>
+								</dl>
+								<dl class="clear">
+									<dt><img src="img/detailimg/rencentlysee7.jpg"/></dt>
+									<dd>
+										<p>"绿宝石葡萄干250g 无添加"</p>
+										<div class="otherproductprice">¥25.00</div>
+									</dd>
+								</dl>
+								<dl class="clear">
+									<dt><img src="img/detailimg/rencentlysee8.jpg"/></dt>
+									<dd>
+										<p>"绿宝石葡萄干250g 无添加"</p>
+										<div class="otherproductprice">¥25.00</div>
+									</dd>
+								</dl>
+								<dl class="clear">
+									<dt><img src="img/detailimg/rencentlysee9.jpg"/></dt>
+									<dd>
+										<p>"绿宝石葡萄干250g 无添加"</p>
+										<div class="otherproductprice">¥25.00</div>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="ourdetail fr">
+							<div class="ourdetailnav">
+								<ul class="clear">
+									<li class="first content1_nav">商品详情</li>
+									<li class="comment_nav">蜜芽圈(84)</li>
+									<li>蜜牙优势</li>
+									<li>问题咨询</li>
+								</ul>
+							</div>
+							<div class="switchover">
+								
+							</div>
+						</div>
+					</div>
+<!--				商品详情介绍和最近浏览的相关商品结束-->
+				</div>
+			<!--导入footer-->
+				<div class="footerload"></div>
+		</div>
+	</body>
+</html>

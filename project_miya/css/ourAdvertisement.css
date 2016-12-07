@@ -1,0 +1,79 @@
+/*两个固定广告*/	
+	.miyaAPP{
+		width:100px;
+		height:248px;
+		position: fixed;
+		left:-50px;
+		top:253px;
+		z-index: 2;
+		display: none;
+	}
+	.miyaInformation{
+		position: fixed;
+		right:3px;
+		top:253px;
+		width:54px;
+		height:254px;
+		border-radius: 5px;
+		border:1px solid #e6e6e6;
+		z-index: 2;
+		background:#FFFFFF;
+		display: none;
+	}
+	.miyaInformation ul li{
+		cursor: pointer;
+		width:54px;
+		height:56px;
+		font-size:12px;
+		color:#333333;
+		border-bottom: 1px solid #e6e6e6;
+		text-align:center;
+/*		overflow: hidden;*/
+	}
+	.miyaInformation ul li div{		
+		width:20px;
+		height:20px;
+		margin: 0 auto;
+		padding-top:12px;
+		padding-bottom:8px;
+	}
+	.miyaInformation ul li.last{
+		cursor:pointer;
+		width:54px;
+		height:28px;
+		line-height:28px;
+		color:#FFFFFF;
+		text-align:center;
+		background:#fa4b9b;
+		border:0;
+		border-radius: 0 0 5px 5px;
+	}
+	.phonemove{
+		z-index: 2;
+		position: relative;
+	}
+	.miyaInformation ul li .phonemovebg{
+		background:url(../img/images/phone.png) no-repeat;
+		position: absolute;
+		width:157px;
+		height:45px;
+		top:0;
+		left:-219px;
+		z-index: 2;
+		display: none;
+	}
+	.wxmove{
+		z-index: 2;
+		position: relative;
+	}
+	
+	.miyaInformation ul li .wxmovebg{
+		background:url(../img/images/publicNumber.png) no-repeat;
+		position: absolute;
+		width:157px;
+		height:193px;
+		bottom:-20px;
+		left:-219px;
+		z-index: 2;
+		display: none;
+	}

@@ -1,0 +1,132 @@
+	body{
+		background: url(../img/loginbg.png);
+		background-size: cover;
+	}
+	.body{
+		margin:0 auto;
+		width:1180px;
+		height:811px;
+		position: relative;
+	}
+	.login{
+			padding-left:22px;
+			padding-right:22px;
+			position: absolute;
+			right:0;
+			top:120px;
+			width:305px;
+			height:308px;
+			border:1px solid #f7f7f7;
+			overflow: hidden;
+	}
+	
+	.loginTitle{
+			margin-top:24px;
+			margin-bottom: 34px;
+			width:306px;
+			height:20px;
+			line-height:20px;
+			font-size:12px;
+	}
+		.loginTitle h3{
+			font-size:20px;
+			color:#f450a2;
+	}
+		.loginTitle .span1{
+			color:#f450a2;
+			padding-right:9px;
+			font-size:12px;
+			
+	}
+	.loginTitle a{
+			color:#666666;
+			cursor: pointer;
+	}
+	.loginTitle a:hover{
+			color:#f450a2;
+	}
+	.padding1{
+		margin-bottom: 17px;
+	}
+	form input{
+		width:304px;
+		height:38px;
+		line-height:38px;
+		border:1px solid #cfcfcf;
+		outline:none;
+
+	}
+	#password ,#phone{
+		-webkit-box-shadow: 0 0 0px 1000px white inset;
+	}
+
+	.checkbox{
+		margin-top:9px;
+		cursor: pointer;
+	}
+	.checkbox input{
+		width:12px;
+		height:12px;
+		line-height:0px;
+/*		margin-right:3px;*/
+	}
+	
+	.autologinspan{
+		font-size:14px;
+		color:#666666;
+	}
+	.forgetpassword{
+		padding-left:9px;
+		font-size:14px;
+		color:#666666;
+	}
+	.forgetpassword:hover{
+		color:#f450a2;
+	}
+	.btn{
+		cursor: pointer;
+		width:304px;
+		font-weight: bold;
+		color:#ffffff;
+		margin-top:18px;
+		background: #f450a2;
+		border-radius: 5px;
+		text-align:center;
+	}
+	.phoneicon,.passwordicon{
+		position:relative;
+	}
+	#phone{
+		text-indent: 38px;
+	}
+	#password{
+		text-indent: 38px;
+	}
+	.phoneicon .phonebg{
+		width:37px;
+		height:35px;
+		position: absolute;
+		background: url(../img/images/1_03.jpg) no-repeat 1px 2px;
+	}
+	.passwordicon .passwordbg{
+		width:37px;
+		height:35px;
+		position: absolute;
+		background: url(../img/images/1_08.jpg) no-repeat 1px 2px;
+	}
+	
+	.loginothers{
+		margin-top: 15px;
+	}
+	.loginothers span:first-child{
+		height:12px;
+		line-height:24px;
+		color:#066666;
+	}
+	.loginothers span:last-child{
+		cursor: pointer;
+		display: block;
+		width:26px;
+		height:26px;
+		background: url(../img/images/loginanother.jpg) no-repeat center;
+	}

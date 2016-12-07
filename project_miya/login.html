@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>登录蜜牙</title>
+<link rel="stylesheet" type="text/css" href="css/public.css"/>
+<link rel="stylesheet" type="text/css" href="css/stylelogin.css"/>
+<link rel="stylesheet" type="text/css" href="css/stylelogin.css"/>
+
+
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/cookie封装.js"></script>
+<script type="text/javascript">
+		$(function(){
+				var loginurl='http://10.16.151.33/course/api/api/Student/Login '
+				//每次登录获取cookie;
+				var phone1=getCookie('phone');
+				var password1=getCookie('password');
+				if(phone1){
+					$('#phone').val(phone1);
+				}
+				if(password1){
+					$('#password').val(password1);
+				}
+				
+
+
+				$('.btn').click(function(evt){
+					//阻止浏览器默认行为
+//					evt.preventDefault();
+					//判断用户名和密码是否正确
+					if(($('#phone').val()==phone1 )&& ($('#password').val()==password1)){
+						//则从数据库获取数据
+//						if(loginurl){
+//						//ajax请求用户名密码判断是否和输入密码相匹配
+//							$.ajax({
+//										type:'post',
+//										async:true,
+//										url:loginurl,
+//										data:{'account':$('.username').val(),'password':$('.password').val()},
+//										success:function(data){
+//											console.log('请求成功');
+//											var datas=typeof data=='string'?JSON.parse(data):data;
+//											console.log(datas);
+//										}
+//							})
+//						}
+
+						//如果登陆成功把用户名和密码存入cookie中
+						if($('.autologin>input').prop('checked')){
+	//						console.log($('.cookieData>input').prop('checked'));
+								//创建一个时间
+								var d=new Date();
+								d.setDate(d.getDate()+10);
+								setCookie('phone', $('#phone').val(),d);
+								setCookie('password',$('#password').val(),d);
+						}
+						//如果正确则进行跳转
+						window.location.href='index.html';
+					}else{
+						alert('用户名或密码有错，请重新输入');
+					}
+					
+
+				})
+
+		})
+</script>
+</head>
+
+<body>
+  <div class="body">
+		<div class="login">
+				<div class="loginTitle clear">
+					<h3 class="fl">登录蜜芽</h3>
+					<div class="regist fr">
+						<span class="span1">已有蜜芽帐号?</span><a href="regist.html">30s注册</a>
+					</div>
+				</div>
+
+				<form>
+					<div class="phoneicon">
+						<div class="phonebg"></div>
+						<input type="text" placeholder="手机号码" name="phone" id='phone' class="phone padding1" autocomplete="off">
+					</div>
+					<div class="passwordicon">
+						<div class="passwordbg"></div>
+						<input type="password" placeholder="密码" name="password" id='password' autocomplete="off"></br>
+					</div>
+					<div class="checkbox clear">
+						<div class="autologin fl">
+							<input type="checkbox" name="checkbox" id="checkbox" value="" checked="checked"/>
+							<span class="autologinspan">自动登录</span>
+						</div>
+						<div class="forgetpassword fr">忘记密码</div>
+					</div>
+					<input type="button" value="登   录" class="btn">
+				</form>	
+				<div class="loginothers">
+					<span class="fl">使用以下登录方式登录：</span><span class="fl"></span>
+				</div>
+		</div>
+	</div>
+</body>
+</html>

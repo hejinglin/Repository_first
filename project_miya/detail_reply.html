@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+<!--css文件-->
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/detail_reply.css"/>
+	
+<!--js文件	-->	
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//引入头部尾部，及广告文件
+			$('.headerload').load('header.html',function(){
+//				$('.allproduct').css({});
+				$('.allclassify').find('i').css('display','inline-block');
+				
+				$('.allclassify').mouseenter(function(){
+					$('.allproduct').show().stop();
+				})
+				$('.allclassify').mouseleave(function(){
+					$('.allproduct').hide().stop();
+				})
+
+				$('.allproduct').mouseenter(function(){
+					$('.allproduct').show().stop();
+				})
+				$('.allproduct').mouseleave(function(){
+					$('.allproduct').hide().stop();
+				})
+			});
+			$('.footerload').load('footer.html');
+			$('.ourAdvertisement').load('ourAdvertisement.html');
+			
+			//实现文字添加功能
+			function Appendzero(obj){
+			 if(obj<10) return "0" +""+ obj;
+			 else return obj;			     
+			}
+			$('.btn').click(function(){
+				var date=new Date();
+				var newdata=date.getFullYear()+"-"+(Appendzero(date.getMonth())+1)+"-"+Appendzero(date.getDate())+'  '+Appendzero(date.getHours())+":"+Appendzero(date.getMinutes())+":"+Appendzero(date.getSeconds());
+				var addtext="<div class='user_reply clear'><div class='user_reply1 fl'></div><div class='user_reply2 fl'><div class='user_phone pinktext'>miya180****0969</div><div class='user_input'>"+$('textarea').val()+"</div></div><div class='user_reply3 fr'>"+newdata+"</div></div>"
+				$('.all_user_reply').append(addtext);
+			})
+			
+			
+		})
+	</script>
+	<body>
+		<!--引入头部文件-->
+		<div class="main">
+			<div class="headerload"></div>
+			<div class="ourAdvertisement"></div>
+			<div class="detail_reply">
+				<div class="pelefavorite">蜜芽首页<span class="pelefavorite_sign">&gt;</span>大家喜欢<span class="pelefavorite_sign">&gt;</span></div>
+				<div class="replaycontent">
+					<div class="replaycontent_head clear">
+						<div class="replaycontent_head1 fl">
+							
+						</div>
+						<div class="replaycontent_head2 fl">
+							<ul class="clear">
+								<li>回复数：<span class="pinktext">2</span></li>
+								<li>点赞数：<span class="pinktext">0 </span></li>
+								<li>发布时间：2016-12-05</li>
+							</ul>
+						</div>
+						<div class="replaycontent_head3 fr">
+							
+						</div>
+
+					</div>
+
+					<p class="p1">非常好吃，新疆特产！</p>
+					<p class="pinktext p2">#干果/果干#</p>
+					<div class="publish_and_praise clear">
+						<span class="pinktext publish fl">发布回帖</span><em class="fr praise">赞</em>
+					</div>
+					<textarea id="replyexample"/></textarea>
+					<div class="reseponse clear">
+						<span class="fl">1/200</span><em class="fr btn">回复</em>
+					</div>
+
+					<div class="all_user_reply">
+<!--						用户自动添加的回复-->
+						<div class="user_reply clear">
+							<div class="user_reply1 fl"></div>
+							<div class="user_reply2 fl">
+								<div class="user_phone pinktext">miya180****0969</div>
+								<div class="user_input">你怎么那么强</div>
+							</div>
+							<div class="user_reply3 fr">
+								2016-12-06 09:21:56
+							</div>
+						</div>
+						
+						<div class="user_reply clear">
+							<div class="user_reply1 fl"></div>
+							<div class="user_reply2 fl">
+								<div class="user_phone pinktext">miya180****0969</div>
+								<div class="user_input">你怎么那么叼</div>
+							</div>
+							<div class="user_reply3 fr">
+								2016-12-06 09:21:56
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--导入footer-->
+			<div class="footerload"></div>
+		</div>
+
+	</body>
+</html>

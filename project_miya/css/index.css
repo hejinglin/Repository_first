@@ -1,0 +1,328 @@
+	body{
+		background:#f9f9f9;
+	}	
+	.main{
+		width:100%;
+		height:100%;
+		overflow:hidden;
+		position:relative;
+	}
+	
+/*		轮播图*/
+		#bander_wrap{
+			width:100%;
+			height:480px;
+		}
+		#bander_wrap .bander_picture{
+			height:480px;
+			overflow:hidden;
+			position:relative;
+			z-index: 0;
+		}
+		.bander_picture1,.bander_picture2,.bander_picture3,.bander_picture4{
+			position: absolute;
+			width:100%;
+			height:480px;
+			background: cover;
+		}
+		.bander_picture1{
+			z-index: 1;
+			opacity: 0.3;
+			filter: alpha(opacity=30);
+		}
+		.bander_picture2{
+			z-index: 0;
+			opacity: 0.3;
+			filter: alpha(opacity=30);
+		}
+		.bander_picture3{
+			z-index: 0;
+			opacity: 0;
+			filter: alpha(opacity=0);
+		}
+		.bander_picture4{
+			z-index: 0;
+			opacity: 0.3;
+			filter: alpha(opacity=30);
+		}
+		.bander_picture img{
+			width:100%;
+			height:480px;
+		}
+		.bander_picturebtn{
+			height:24px;
+			width:100px;
+			position:absolute;
+			bottom:15px;
+			right:80px;
+			z-index:6;
+			border-radius: 20px;
+		}
+		.bander_picture em{
+			background: #000000;
+			opacity: 0.2;
+			height:24px;
+			width:100px;
+			position:absolute;
+			bottom:15px;
+			right:80px;
+			z-index:5;
+			border-radius: 20px;
+		}
+		.bander_picturebtn ul{
+			position:absolute;
+			top:7px;
+			left:14px;
+			z-index:6;
+		}
+		.bander_picturebtn ul li{
+			cursor:pointer;
+			border-radius: 50%;
+			float:left;
+			width:10px;
+			height:10px;
+			background:#FFFFFF;
+			margin-right:10px;
+			opacity: 1;
+/*			z-index:6;*/
+		}
+/*主页内容区*/
+		.hotbander{
+/*			background:yellow;*/
+			margin:0 auto;
+			padding-left:241px;
+			width:859px;
+			height:107px;
+		}
+		.hotbander ul{
+			margin:12px 0 0 12px;
+		}
+		.hotbander ul li{
+			float:left;
+			font-weight:bold;
+			font-size:12px;
+			line-height:107px;
+			text-align:center;
+			cursor: pointer;
+			display: block;
+			width:121px;
+			height:107px;
+			background:#FFFFFF;
+		}
+		.hotbander ul li img{
+			height:107px;
+			width:121px;
+		}
+		.banner2{
+			margin:15px auto;
+			width:1100px;
+			height:240px;
+		}
+/*为你推荐	*/
+		.recommend{
+			width:1100px;
+			height:732px;
+			margin:37px auto;
+		}
+		.recommendheader h3{
+			width:114px;
+			font-size:24px;
+		}
+		.recommendheader .headerright{
+			font-size:18px;
+			padding-top:6px;
+			color:#999999;
+		}
+		.headerright .mami{
+			padding-right:6px;
+		}
+		.recommend .recommendcontent{
+			margin-top:25px;
+			width:1096px;
+			height:685px;
+			border-left:1px solid #e5e5e5;
+			border-top:1px solid #e5e5e5;
+		}
+		.recommend .recommendcontent dl{
+			float: left;
+			width:218px;
+			height:340px;
+			border-right:1px solid #e5e5e5;
+			border-bottom:1px solid #e5e5e5;
+		}	
+		.recommendcontent dl dt{
+			width:218px;
+			height:220px;
+		}
+		.recommendcontent dl dd{
+			position:relative;
+			padding:20px 0 0 16px;
+		}
+		.recommendcontent dl dd h3{
+			width:176px;
+			font-size:12px;
+			color:#222222;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.recommendcontent dl dd p{
+			padding-top:7px;
+			font-size:12px;
+			width:176px;
+			font-size:12px;
+			color:#555555;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.recommendcontent .money{
+			margin-top:15px;
+		}
+		.recommendcontent .money .sign{
+/*			margin-top:19px;*/
+			color:#fa4b9b;
+			font-size:12px;
+			font-family: arial;
+		}
+		.recommendcontent .money .newmoney{
+/*			margin-top:16px;*/
+			color:#fa4b9b;
+			font-size:16px;
+			font-family: arial;
+			font-weight:bold;
+		}
+		.recommendcontent .money .oldmoney{
+			margin-left:5px;
+/*			margin-top:20px;*/
+			color:#999999;
+			font-size:10px;
+			text-decoration:line-through;
+			font-family: arial;
+		}
+		.recommendcontent .buyner{
+			margin-top:5px;
+			font-size:12px;
+			color:#666666;
+		}
+		.recommendcontent img{
+			width:218px;
+			height:220px;
+		}
+		.recommendcontent .panic_buying{
+			cursor: pointer;
+			font-size;12px;
+			color:#fff;
+			width:66px;
+			height:28px;
+			text-align:center;
+			line-height:28px;
+			background:#fa4b9b;
+			border-radius:20px;
+			position:absolute;
+			top:75px;
+			right:16px;
+		}
+/*		今日特卖*/
+		.spacailsell{
+			width:1100px;
+			margin:37px auto;
+		}
+		.spacailsell h3{
+			width:114px;
+			font-size:24px;
+		}
+		.spacailsell .headerright{
+			font-size:18px;
+			padding-top:6px;
+			color:#999999;
+		}
+		
+		.spacailsellcontent{
+			margin-top:25px;
+			width:1100px;
+		}
+		.spacailsellcontent1{
+			background:#fff;
+			padding:7px 0 7px 7px;
+			height:350px;
+			width:1093px;
+		}
+		.spacailsellcontent1left{
+			width:750px;
+			height:350px;
+			float:left;
+			
+		}
+		.spacailsellcontent1right{
+			padding:0 17px;
+			width:307px;
+			height:350px;
+			float:left;
+		}
+		.spacailsellcontent1right dl{
+			width:307px;
+			height:116px;
+			border-bottom:1px dashed #c4c4c4;
+		}
+		.spacailsellcontent1right dl.last{
+			border:none;
+		}
+		.spacailsellcontent1right dl dt{
+			float:left;
+			margin-top:18px;
+			width:78px;
+			height:78px;
+			border:1px solid #c4c4c4;
+			position:relative;
+/*			padding-bottom:18px;*/
+		}
+		.spacailsellcontent1right dl dt span{
+			position: absolute;
+			left: 0;
+			top:0;
+			width:42px;
+			height:18px;
+		}
+		.spacailsellcontent1right dl dt img{
+			width:78px;
+			height:78px;
+		}
+		.spacailsellcontent1right dl dd{
+			padding:22px 19px 0 13px;
+			float:left;
+			width:182px;
+			height:94px;
+
+		}
+
+		.spacailsellcontent1right dl dd p{
+			font-family: "微软雅黑";
+			font-size:12px;
+			color:#666666;
+			line-height: 20px;
+		}
+		.spacailsellcontent1right dl dd .money{
+			padding-top:21px;
+		}
+		.spacailsellcontent1right .money .sign{
+/*			margin-top:19px;*/
+			color:#fa4b9b;
+			font-size:12px;
+			font-family: arial;
+		}
+		.spacailsellcontent1right .money .newmoney{
+/*			margin-top:16px;*/
+			color:#fa4b9b;
+			font-size:16px;
+			font-family: arial;
+			font-weight:bold;
+		}
+		.spacailsellcontent1right .money .oldmoney{
+			margin-left:5px;
+/*			margin-top:20px;*/
+			color:#999999;
+			font-size:10px;
+			text-decoration:line-through;
+			font-family: arial;
+		}

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>蜜牙网主页</title>
+	</head>
+<!--css文件-->
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+
+<!--js文件	-->	
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/cookie封装.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.headerload').load('header.html',function(){
+				$('.allproduct').css({'display':'block'});
+			});
+			$('.footerload').load('footer.html');
+			$('.ourAdvertisement').load('ourAdvertisement.html');
+			//为你推荐动画
+			$('.recommendcontent dl').hover(function(){
+//				console.log(1);
+				$(this).find('dd h3').css({'color':'#fa4b9b'});
+			},function(){
+				$(this).find('dd h3').css({'color':'#222222'});
+			})
+			
+			$('.recommendcontent dt').hover(function(){
+//				console.log(1);
+				$(this).css({'opacity':'0.85'});
+			},function(){
+				$(this).css({'opacity':'1'});
+			})
+			
+			$('.recommendcontent .panic_buying').hover(function(){
+//				console.log(1);
+				$(this).css({'background-color':'#ec0971'});
+			},function(){
+				$(this).css({'background-color':'#fa4b9b'});
+			})
+			//今日特卖动画
+			$('.spacailsellcontent1right dl').hover(function(){
+				$(this).find('dd p').css({'color':'#fa4b9b'});
+			},function(){
+				$(this).find('dd p').css({'color':'#666666'});
+			})
+			
+			$('.spacailsellcontent1right dt').hover(function(){
+//				console.log(1);
+				$(this).css({'opacity':'0.85'});
+			},function(){
+				$(this).css({'opacity':'0.85'});
+			})
+			
+			//轮播图
+			//初始化，让第一张图片的透明度为1
+			$('.bander_picture1').css('opacity','1');
+			$('.bander_picturebtn ul li.first').css('background','#fa4b9b');
+			var index=0;
+			timer=setInterval(bandermove,5000);
+			function bandermove(){
+				index++;
+//				console.log(index);
+				if(index>$(".bander_picture .bander").length-1){
+					index=0;
+				}
+				//获取j的坐标进行坐标判定判断
+				for(var j=0;j<$(".bander_picture .bander").length;j++){
+					if(index==j){
+//						console.log(0);
+						$('.bander_picture .bander').eq(index).css({'z-index':1});
+						$('.bander_picturebtn ul li').eq(index).css('background','#fa4b9b');
+						$('.bander_picture .bander').eq(index).animate({'opacity':1},1000,function(){
+		//					console.log(this);
+//							$(this).css('opacity','0.3');
+						});
+					}else{
+//						console.log(1);
+						$(".bander_picture .bander").eq(j).css({'z-index':0});
+						$(".bander_picture .bander").eq(j).css({'opacity':0.3});
+						$('.bander_picturebtn ul li').eq(j).css({'background':'#FFFFFF'});
+					}
+				}
+			}
+			//轮播图按钮的点击事件
+			for(var j=0;j<$('.bander_picturebtn ul li').length;j++){
+				$('.bander_picturebtn ul li').eq(j)[0].index=j;
+//				console.log($('.bander_picturebtn ul li').eq(j)[0].index);
+				$('.bander_picturebtn ul li').eq(j).click(function(){
+					console.log($(this)[0].index);
+					var i=$(this)[0].index;
+					//关闭定时器
+					clearInterval(timer);
+					index=i-1;
+					bandermove();
+					timer=setInterval(bandermove,5000);
+				})
+				$('.bander_picturebtn ul li').eq(j).mouseenter(function(){
+					console.log($(this)[0].index);
+					var i=$(this)[0].index;
+					//关闭定时器
+					clearInterval(timer);
+					index=i-1;
+					bandermove();
+					timer=setInterval(bandermove,5000);
+				})
+			}
+			
+
+		})
+	</script>
+	<body>
+<!--main开始-->
+		<div class="main">
+<!--引入头部文件-->
+			<div class="headerload"></div>
+			<div class="ourAdvertisement"></div>
+
+<!--轮播图开始-->
+			<div id="bander_wrap">
+				<div class="bander_picture clear">
+					<div class="bander_picture1 bander fl" style="background: url(img/images/rotedpicture1.jpg) center"></div>
+					<div class="bander_picture2 bander fl" style="background: url(img/images/rotedpicture2.jpg) center"></div>
+					<div class="bander_picture3 bander fl" style="background: url(img/images/rotedpicture3.jpg) center"></div>
+					<div class="bander_picture4 bander fl" style="background: url(img/images/rotedpicture4.jpg) center"></div>
+					<div class="bander_picturebtn">
+						<ul class="clear">
+							<li class="first"></li><li></li><li></li><li></li>
+						</ul>
+					</div>
+					<em></em>
+				</div>
+			</div>
+<!--轮播图结束-->
+<!--网页中心内容开始-->
+<!--		热卖品牌栏-->
+			<div class="hotbander">				
+				<ul class="clear">
+					<li>热卖品牌</li>
+					<li><img src="img/images/hotbander1.jpg"/></li>
+					<li><img src="img/images/hotbander2.jpg"/></li>
+					<li><img src="img/images/hotbander3.jpg"/></li>
+					<li><img src="img/images/hotbander4.jpg"/></li>
+					<li><img src="img/images/hotbander5.jpg"/></li>
+					<li><img src="img/images/hotbander6.jpg"/></li>
+				</ul>
+			</div>
+<!--		第二个banner-->
+			<div class="banner2" style="background: url(img/images/banner2.jpg) no-repeat center"></div>
+<!--			为你推荐-->
+			<div class="recommend">
+				<div class="recommendheader clear">
+					<h3 class="fl">为你推荐</h3>
+					<div class="headerright fl"><span class="mami">千万妈妈</span><span>精明之选</span></div>
+				</div>
+				<div class="recommendcontent clear">
+					<dl>
+						<dt><img src="img/images/recommend1.jpg"/></dt>
+						<dd>
+							<h3>百爱多功能实木无期婴儿床 奇幻</h3>
+							<p>独有空间,给宝宝舒适的睡眠。</p>
+							<div class="money"><span class="sign">￥</span><span class="newmoney">379.00</span><span class="oldmoney">￥699.00</span></div>
+							<div class="buyner">29711人已购买</div>
+							<div class="panic_buying">
+								立即抢
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt><img src="img/images/recommend2.jpg"/></dt>
+						<dd>
+							<h3>百爱多功能实木无期婴儿床 奇幻</h3>
+							<p>独有空间,给宝宝舒适的睡眠。</p>
+							<div class="money"><span class="sign">￥</span><span class="newmoney">379.00</span><span class="oldmoney">￥699.00</span></div>
+							<div class="buyner">29711人已购买</div>
+							<div class="panic_buying">
+								立即抢
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt><img src="img/images/recommend3.jpg"/></dt>
+						<dd>
+							<h3>百爱多功能实木无期婴儿床 奇幻</h3>
+							<p>独有空间,给宝宝舒适的睡眠。</p>
+							<div class="money"><span class="sign">￥</span><span class="newmoney">379.00</span><span class="oldmoney">￥699.00</span></div>
+							<div class="buyner">29711人已购买</div>
+							<div class="panic_buying">
+								立即抢
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt><img src="img/images/recommend4.jpg"/></dt>
+						<dd>
+							<h3>百爱多功能实木无期婴儿床 奇幻</h3>
+							<p>独有空间,给宝宝舒适的睡眠。</p>
+							<div class="money"><span class="sign">￥</span><span class="newmoney">379.00</span><span class="oldmoney">￥699.00</span></div>
+							<div class="buyner">29711人已购买</div>
+							<div class="panic_buying">
+								立即抢
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt><img src="img/images/recommend5.jpg"/></dt>
+						<dd>
+							<h3>百爱多功能实木无期婴儿床 奇幻</h3>
+							<p>独有空间,给宝宝舒适的睡眠。</p>
+							<div class="money"><span class="sign">￥</span><span class="newmoney">379.00</span><span class="oldmoney">￥699.00</span></div>
+							<div class="buyner">29711人已购买</div>
+							<div class="panic_buying">
+								立即抢
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt><img src="img/images/recommend6.jpg"/></dt>
+						<dd>
+							<h3>百爱多功能实木无期婴儿床 奇幻</h3>
+							<p>独有空间,给宝宝舒适的睡眠。</p>
+							<div class="money"><span class="sign">￥</span><span class="newmoney">379.00</span><span class="oldmoney">￥699.00</span></div>
+							<div class="buyner">29711人已购买</div>
+							<div class="panic_buying">
+								立即抢
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt><img src="img/images/recommend7.jpg"/></dt>
+						<dd>
+							<h3>百爱多功能实木无期婴儿床 奇幻</h3>
+							<p>独有空间,给宝宝舒适的睡眠。</p>
+							<div class="money"><span class="sign">￥</span><span class="newmoney">379.00</span><span class="oldmoney">￥699.00</span></div>
+							<div class="buyner">29711人已购买</div>
+							<div class="panic_buying">
+								立即抢
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt><img src="img/images/recommend8.jpg"/></dt>
+						<dd>
+							<h3>百爱多功能实木无期婴儿床 奇幻</h3>
+							<p>独有空间,给宝宝舒适的睡眠。</p>
+							<div class="money"><span class="sign">￥</span><span class="newmoney">379.00</span><span class="oldmoney">￥699.00</span></div>
+							<div class="buyner">29711人已购买</div>
+							<div class="panic_buying">
+								立即抢
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt><img src="img/images/recommend9.jpg"/></dt>
+						<dd>
+							<h3>百爱多功能实木无期婴儿床 奇幻</h3>
+							<p>独有空间,给宝宝舒适的睡眠。</p>
+							<div class="money"><span class="sign">￥</span><span class="newmoney">379.00</span><span class="oldmoney">￥699.00</span></div>
+							<div class="buyner">29711人已购买</div>
+							<div class="panic_buying">
+								立即抢
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt><img src="img/images/recommend10.jpg"/></dt>
+						<dd>
+							<h3>百爱多功能实木无期婴儿床 奇幻</h3>
+							<p>独有空间,给宝宝舒适的睡眠。</p>
+							<div class="money"><span class="sign">￥</span><span class="newmoney">379.00</span><span class="oldmoney">￥699.00</span></div>
+							<div class="buyner">29711人已购买</div>
+							<div class="panic_buying">
+								立即抢
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+<!--			spacailsell开始-->
+			<div class="spacailsell">
+					<div class="clear">
+						<h3 class="fl">今日特卖</h3>
+						<div class="headerright fl"><span>每天十点上新</span></div>
+					</div>
+					<div class="spacailsellcontent">
+						
+						<div class="spacailsellcontent1">
+							<div class="spacailsellcontent1left" style="background: url(img/images/spacailsellbig1.jpg) no-repeat center">
+								
+							</div>
+							<div class="spacailsellcontent1right">
+								<dl>
+									<dt><img src="img/images/spacailsellsmall1.jpg"/><span style="background: url(img/images/top1.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>雪花秀 Sulwhasoo 采淡气垫BB自然色23号15g*2</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">359.00</span><span class="oldmoney">¥450.00</span>
+										</div>
+									</dd>
+								</dl>
+								
+								<dl>
+									<dt><img src="img/images/spacailsellsmall2.jpg"/><span style="background:url(img/images/top2.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>迪奥 Dior 粉漾魅惑润唇膏 #001(变色口红)</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">289.00</span><span class="oldmoney">¥299.00</span>
+										</div>
+									</dd>
+								</dl>
+								
+								<dl class="last">
+									<dt><img src="img/images/spacailsellsmall3.jpg"/><span class="top" style="background:url(img/images/top3.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>RMK 丝薄粉底液 SPF14 102#</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">359.00</span><span class="oldmoney">¥560.00</span>
+										</div>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						
+						<div class="spacailsellcontent1">
+							<div class="spacailsellcontent1left" style="background: url(img/images/spacailsellbig2.jpg) no-repeat center">
+								
+							</div>
+							<div class="spacailsellcontent1right">
+								<dl>
+									<dt><img src="img/images/spacailsellsmall4.jpg"/><span style="background: url(img/images/top1.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>雪花秀 Sulwhasoo 采淡气垫BB自然色23号15g*2</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">359.00</span><span class="oldmoney">¥450.00</span>
+										</div>
+									</dd>
+								</dl>
+								
+								<dl>
+									<dt><img src="img/images/spacailsellsmall5.jpg"/><span style="background:url(img/images/top2.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>迪奥 Dior 粉漾魅惑润唇膏 #001(变色口红)</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">289.00</span><span class="oldmoney">¥299.00</span>
+										</div>
+									</dd>
+								</dl>
+								
+								<dl class="last">
+									<dt><img src="img/images/spacailsellsmall6.jpg"/><span class="top" style="background:url(img/images/top3.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>RMK 丝薄粉底液 SPF14 102#</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">359.00</span><span class="oldmoney">¥560.00</span>
+										</div>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						
+						<div class="spacailsellcontent1">
+							<div class="spacailsellcontent1left" style="background: url(img/images/spacailsellbig1.jpg) no-repeat center">
+								
+							</div>
+							<div class="spacailsellcontent1right">
+								<dl>
+									<dt><img src="img/images/spacailsellsmall1.jpg"/><span style="background: url(img/images/top1.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>雪花秀 Sulwhasoo 采淡气垫BB自然色23号15g*2</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">359.00</span><span class="oldmoney">¥450.00</span>
+										</div>
+									</dd>
+								</dl>
+								
+								<dl>
+									<dt><img src="img/images/spacailsellsmall2.jpg"/><span style="background:url(img/images/top2.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>迪奥 Dior 粉漾魅惑润唇膏 #001(变色口红)</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">289.00</span><span class="oldmoney">¥299.00</span>
+										</div>
+									</dd>
+								</dl>
+								
+								<dl class="last">
+									<dt><img src="img/images/spacailsellsmall3.jpg"/><span class="top" style="background:url(img/images/top3.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>RMK 丝薄粉底液 SPF14 102#</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">359.00</span><span class="oldmoney">¥560.00</span>
+										</div>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						
+						<div class="spacailsellcontent1">
+							<div class="spacailsellcontent1left" style="background: url(img/images/spacailsellbig2.jpg) no-repeat center">
+								
+							</div>
+							<div class="spacailsellcontent1right">
+								<dl>
+									<dt><img src="img/images/spacailsellsmall4.jpg"/><span style="background: url(img/images/top1.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>雪花秀 Sulwhasoo 采淡气垫BB自然色23号15g*2</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">359.00</span><span class="oldmoney">¥450.00</span>
+										</div>
+									</dd>
+								</dl>
+								
+								<dl>
+									<dt><img src="img/images/spacailsellsmall5.jpg"/><span style="background:url(img/images/top2.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>迪奥 Dior 粉漾魅惑润唇膏 #001(变色口红)</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">289.00</span><span class="oldmoney">¥299.00</span>
+										</div>
+									</dd>
+								</dl>
+								
+								<dl class="last">
+									<dt><img src="img/images/spacailsellsmall6.jpg"/><span class="top" style="background:url(img/images/top3.jpg) no-repeat"></span></dt>
+									<dd>
+										<p>RMK 丝薄粉底液 SPF14 102#</p>
+										<div class="money">
+											<span class="sign">￥</span><span class="newmoney">359.00</span><span class="oldmoney">¥560.00</span>
+										</div>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						
+					</div>
+			</div>
+<!--			spacailsell结束-->				
+<!--网页中心内容结束-->	
+<!--导入footer-->
+			<div class="footerload"></div>
+		</div>
+<!--		main结束-->
+	</body>
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>header</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/header.css"/>
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css"/>
+	
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/cookie封装.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('.buy2').click(function(){
+			console.log(1);
+			location.href="shop_car.html";
+		})
+			//每次登录获取cookie;
+				var phone1=getCookie('phone');
+				var login_show="你好，miya"+phone1;
+				console.log(phone1);
+				if(phone1){
+					$('.login_show').html(login_show);
+					$('.logo_and_regist').html('<span class="login1"><a href="html/login.html">我的蜜牙</a></span><em><a href="html/regist.html">客户中心</a></em>');
+				}
+	})
+	</script>
+	<body>
+<!--			header开始-->
+			<div id="header_wrap">
+				<div class="header clear">
+					<div class="headerleft fl">
+						<div class="phoneversionbg"></div>
+						<div class="phoneversion">
+							<a>手机蜜牙</a>
+						</div>
+					</div>
+					<div class="headerright fr">
+						<ul class="clear">
+							<li class="login_show">你好，欢迎来到蜜芽！</li>
+							<li class="logo_and_regist"><span class="login1"><a href="login.html">登录</a></span><em><a href="regist.html">免费注册</a></em></li>
+							<li class="last"><a>帮助中心</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+<!--			header结束-->
+<!--			search开始-->
+			<div id="search">
+				<div class="search clear">
+					<div class="logo fl"></div>
+					<div class="searchinput fl">
+						<div class="searchinput1 clear">
+							<input type="text" name="text1" id="text1" value="贝贝帕克" class="fl"/>
+							<input type="submit" name="searchbtn" id="searchbtn" value="搜索" class="fl"/>
+						</div>
+						<div class="searchinput2">
+							<ul class="clear">
+								<li class="pink first"><a href="#">爬服</a></li>
+								<li class="pink"><a href="#">果泥</a></li>
+								<li><a href="#">收纳柜</a></li>
+								<li><a href="#">洗衣液</a></li>
+								<li><a href="#">退热贴</a></li>
+								<li class="last"><a href="#">婴儿床</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="buy fl">
+						<div class="buy2 clear">
+							<div class="shoping fl">
+								<i class="fa fa-shopping-cart"></i>
+							</div>
+							<div class="shoppingText fl">购物车<span>0</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+<!--			search结束-->
+<!--nav开始-->
+			<div class="nav">
+				<div class="nav1">
+					<ul class="clear">
+						<li class="selected firstli">首页</li>
+						<li class="firstli">纸尿裤</li>
+						<li class="firstli">奶粉</li>
+						<li class='extend1 firstli'><span>正品保证
+							</span><i class="fa fa-angle-down"></i>
+							<ul>
+								<li>正品保证</li>
+								<li>退货政策</li>
+								<li>帮助中心</li>
+							</ul>
+						</li>
+						<li class="firstli">早教音乐</li>
+					</ul>
+					
+	<!--				nav2导航开始-->
+					<div class="nav2">
+						<div class="allclassify">
+							全部商品分类
+							</span><i class="fa fa-angle-down"></i>
+						</div>
+						<div class="allproduct">
+	<!--						产品1-->
+							<div class="product1 product clear">
+								<div class="productleft fl">
+									<ul class="clear">
+										<h3>奶粉/尿巾裤</h3>
+										<li><a href="list.html">婴儿奶粉</a></li>
+										<li><a>羊奶粉</a></li>
+										<li><a>特配奶粉</a></li>
+										<li><a>拉拉裤</a></li>
+										<li><a>宝宝湿巾</a></li>
+										<li><a>德国爱他美</a></li>
+									</ul>
+									<div class="nav2extend clear">
+										<div class="nav2extend1 fl">
+											<div class="sellmilk">
+												<h3>奶粉专区</h3>
+												<ul class="clear">
+													<li class="pink">婴儿奶粉</li>
+													<li>成人奶粉</li>
+													<li class="pink">羊奶粉</li>
+													<li>特配奶粉</li>
+													<li class="pink">妈妈奶粉</li>
+													<li>成人奶粉</li>
+												</ul>
+											</div>
+	
+											<div class="sellzhiniaoku">
+												<h3>全球纸尿裤大牌</h3>
+												<ul class="clear">
+													<li class="pink">尤妮娃</li>
+													<li class="pink">花王</li>
+													<li class="pink">GOON大王天使</li>
+													<li>GOON大王维E</li>
+													<li class="pink">pampers帮宝适</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li class="pink">Mamypoke 妈咪宝贝</li>
+													<li>Libero丽贝乐</li>
+													<li>Baby Baby Happy 贝拉宝贝</li>
+													<li>Mamypoke 妈咪宝贝</li>
+													<li>BIOFITS 爱因舒坦 妈咪宝贝</li>
+													<li>BAMBO 斑博</li>
+												</ul>
+											</div>
+						
+										</div>
+										<div class="nav2extend2 fl">
+											<div class="sellpipi">
+												<h3>屁屁护理</h3>
+												<ul class="clear">
+													<li class="pink">纸尿裤</li>
+													<li>拉拉裤</li>
+													<li>隔尿垫/布尿垫</li>
+													<li class="pink">宝宝湿巾</li>
+												</ul>
+											</div>
+											
+											<div class="sellfamousemilk">
+												<h3>全球奶粉大牌</h3>
+												<ul class="clear">
+													<li class="pink">德国爱他美</li>
+													<li class="pink">德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li class="pink">荷兰Herobody</li>
+													<li class="pink">德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+													<li>德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+												</ul>
+											</div>
+	
+										</div>
+										<div class="nav2extend3 fl">
+											<div class="bandrecommend">
+												<h3>品牌热卖</h3>
+												<ul class="clear">
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell2.jpg"/></li>
+													<li><img src="img/images/hotsell3.jpg"/></li>
+													<li><img src="img/images/hotsell4.jpg"/></li>
+													<li><img src="img/images/hotsell5.jpg"/></li>
+													<li><img src="img/images/hotsell6.jpg"/></li>
+													<li><img src="img/images/hotsell7.jpg"/></li>
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell9.jpg"/></li>
+												</ul>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+	
+								<div class="angleright fr">
+									<i class="fa fa-angle-right"></i>
+								</div>
+							</div>
+							
+	<!--						产品2-->
+							<div class="product product2 clear">
+								<div class="productleft fl">
+									<ul class="clear">
+										<h3>奶粉/尿巾裤</h3>
+										<li><a>婴儿奶粉</a></li>
+										<li><a>羊奶粉</a></li>
+										<li><a>特配奶粉</a></li>
+										<li><a>拉拉裤</a></li>
+										<li><a>宝宝湿巾</a></li>
+										<li><a>德国爱他美</a></li>
+									</ul>
+									<div class="nav2extend clear">
+										<div class="nav2extend1 fl">
+											<div class="sellmilk">
+												<h3>奶粉专区</h3>
+												<ul class="clear">
+													<li class="pink">婴儿奶粉</li>
+													<li>成人奶粉</li>
+													<li class="pink">羊奶粉</li>
+													<li>特配奶粉</li>
+													<li class="pink">妈妈奶粉</li>
+													<li>成人奶粉</li>
+												</ul>
+											</div>
+	
+											<div class="sellzhiniaoku">
+												<h3>全球纸尿裤大牌</h3>
+												<ul class="clear">
+													<li class="pink">尤妮娃</li>
+													<li class="pink">花王</li>
+													<li class="pink">GOON大王天使</li>
+													<li>GOON大王维E</li>
+													<li class="pink">pampers帮宝适</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li class="pink">Mamypoke 妈咪宝贝</li>
+													<li>Libero丽贝乐</li>
+													<li>Baby Baby Happy 贝拉宝贝</li>
+													<li>Mamypoke 妈咪宝贝</li>
+													<li>BIOFITS 爱因舒坦 妈咪宝贝</li>
+													<li>BAMBO 斑博</li>
+												</ul>
+											</div>
+						
+										</div>
+										<div class="nav2extend2 fl">
+											<div class="sellpipi">
+												<h3>屁屁护理</h3>
+												<ul class="clear">
+													<li class="pink">纸尿裤</li>
+													<li>拉拉裤</li>
+													<li>隔尿垫/布尿垫</li>
+													<li class="pink">宝宝湿巾</li>
+												</ul>
+											</div>
+											
+											<div class="sellfamousemilk">
+												<h3>全球奶粉大牌</h3>
+												<ul class="clear">
+													<li class="pink">德国爱他美</li>
+													<li class="pink">德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li class="pink">荷兰Herobody</li>
+													<li class="pink">德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+													<li>德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+												</ul>
+											</div>
+	
+										</div>
+										<div class="nav2extend3 fl">
+											<div class="bandrecommend">
+												<h3>品牌热卖</h3>
+												<ul class="clear">
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell2.jpg"/></li>
+													<li><img src="img/images/hotsell3.jpg"/></li>
+													<li><img src="img/images/hotsell4.jpg"/></li>
+													<li><img src="img/images/hotsell5.jpg"/></li>
+													<li><img src="img/images/hotsell6.jpg"/></li>
+													<li><img src="img/images/hotsell7.jpg"/></li>
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell9.jpg"/></li>
+												</ul>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+	
+								<div class="angleright fr">
+									<i class="fa fa-angle-right"></i>
+								</div>
+							</div>
+							
+	<!--						产品3-->
+							<div class="product product3 clear">
+								<div class="productleft fl">
+									<ul class="clear">
+										<h3>奶粉/尿巾裤</h3>
+										<li><a>婴儿奶粉</a></li>
+										<li><a>羊奶粉</a></li>
+										<li><a>特配奶粉</a></li>
+										<li><a>拉拉裤</a></li>
+										<li><a>宝宝湿巾</a></li>
+										<li><a>德国爱他美</a></li>
+									</ul>
+									<div class="nav2extend clear">
+										<div class="nav2extend1 fl">
+											<div class="sellmilk">
+												<h3>奶粉专区</h3>
+												<ul class="clear">
+													<li class="pink">婴儿奶粉</li>
+													<li>成人奶粉</li>
+													<li class="pink">羊奶粉</li>
+													<li>特配奶粉</li>
+													<li class="pink">妈妈奶粉</li>
+													<li>成人奶粉</li>
+												</ul>
+											</div>
+	
+											<div class="sellzhiniaoku">
+												<h3>全球纸尿裤大牌</h3>
+												<ul class="clear">
+													<li class="pink">尤妮娃</li>
+													<li class="pink">花王</li>
+													<li class="pink">GOON大王天使</li>
+													<li>GOON大王维E</li>
+													<li class="pink">pampers帮宝适</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li class="pink">Mamypoke 妈咪宝贝</li>
+													<li>Libero丽贝乐</li>
+													<li>Baby Baby Happy 贝拉宝贝</li>
+													<li>Mamypoke 妈咪宝贝</li>
+													<li>BIOFITS 爱因舒坦 妈咪宝贝</li>
+													<li>BAMBO 斑博</li>
+												</ul>
+											</div>
+						
+										</div>
+										<div class="nav2extend2 fl">
+											<div class="sellpipi">
+												<h3>屁屁护理</h3>
+												<ul class="clear">
+													<li class="pink">纸尿裤</li>
+													<li>拉拉裤</li>
+													<li>隔尿垫/布尿垫</li>
+													<li class="pink">宝宝湿巾</li>
+												</ul>
+											</div>
+											
+											<div class="sellfamousemilk">
+												<h3>全球奶粉大牌</h3>
+												<ul class="clear">
+													<li class="pink">德国爱他美</li>
+													<li class="pink">德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li class="pink">荷兰Herobody</li>
+													<li class="pink">德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+													<li>德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+												</ul>
+											</div>
+	
+										</div>
+										<div class="nav2extend3 fl">
+											<div class="bandrecommend">
+												<h3>品牌热卖</h3>
+												<ul class="clear">
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell2.jpg"/></li>
+													<li><img src="img/images/hotsell3.jpg"/></li>
+													<li><img src="img/images/hotsell4.jpg"/></li>
+													<li><img src="img/images/hotsell5.jpg"/></li>
+													<li><img src="img/images/hotsell6.jpg"/></li>
+													<li><img src="img/images/hotsell7.jpg"/></li>
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell9.jpg"/></li>
+												</ul>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+	
+								<div class="angleright fr">
+									<i class="fa fa-angle-right"></i>
+								</div>
+							</div>
+							
+	<!--						产品4-->
+							<div class="product product4 clear">
+								<div class="productleft fl">
+									<ul class="clear">
+										<h3>奶粉/尿巾裤</h3>
+										<li><a>婴儿奶粉</a></li>
+										<li><a>羊奶粉</a></li>
+										<li><a>特配奶粉</a></li>
+										<li><a>拉拉裤</a></li>
+										<li><a>宝宝湿巾</a></li>
+										<li><a>德国爱他美</a></li>
+									</ul>
+									<div class="nav2extend clear">
+										<div class="nav2extend1 fl">
+											<div class="sellmilk">
+												<h3>奶粉专区</h3>
+												<ul class="clear">
+													<li class="pink">婴儿奶粉</li>
+													<li>成人奶粉</li>
+													<li class="pink">羊奶粉</li>
+													<li>特配奶粉</li>
+													<li class="pink">妈妈奶粉</li>
+													<li>成人奶粉</li>
+												</ul>
+											</div>
+	
+											<div class="sellzhiniaoku">
+												<h3>全球纸尿裤大牌</h3>
+												<ul class="clear">
+													<li class="pink">尤妮娃</li>
+													<li class="pink">花王</li>
+													<li class="pink">GOON大王天使</li>
+													<li>GOON大王维E</li>
+													<li class="pink">pampers帮宝适</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li class="pink">Mamypoke 妈咪宝贝</li>
+													<li>Libero丽贝乐</li>
+													<li>Baby Baby Happy 贝拉宝贝</li>
+													<li>Mamypoke 妈咪宝贝</li>
+													<li>BIOFITS 爱因舒坦 妈咪宝贝</li>
+													<li>BAMBO 斑博</li>
+												</ul>
+											</div>
+						
+										</div>
+										<div class="nav2extend2 fl">
+											<div class="sellpipi">
+												<h3>屁屁护理</h3>
+												<ul class="clear">
+													<li class="pink">纸尿裤</li>
+													<li>拉拉裤</li>
+													<li>隔尿垫/布尿垫</li>
+													<li class="pink">宝宝湿巾</li>
+												</ul>
+											</div>
+											
+											<div class="sellfamousemilk">
+												<h3>全球奶粉大牌</h3>
+												<ul class="clear">
+													<li class="pink">德国爱他美</li>
+													<li class="pink">德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li class="pink">荷兰Herobody</li>
+													<li class="pink">德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+													<li>德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+												</ul>
+											</div>
+	
+										</div>
+										<div class="nav2extend3 fl">
+											<div class="bandrecommend">
+												<h3>品牌热卖</h3>
+												<ul class="clear">
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell2.jpg"/></li>
+													<li><img src="img/images/hotsell3.jpg"/></li>
+													<li><img src="img/images/hotsell4.jpg"/></li>
+													<li><img src="img/images/hotsell5.jpg"/></li>
+													<li><img src="img/images/hotsell6.jpg"/></li>
+													<li><img src="img/images/hotsell7.jpg"/></li>
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell9.jpg"/></li>
+												</ul>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+	
+								<div class="angleright fr">
+									<i class="fa fa-angle-right"></i>
+								</div>
+							</div>
+							
+	<!--						产品5-->
+							<div class="product product5 clear">
+								<div class="productleft fl">
+									<ul class="clear">
+										<h3>奶粉/尿巾裤</h3>
+										<li><a>婴儿奶粉</a></li>
+										<li><a>羊奶粉</a></li>
+										<li><a>特配奶粉</a></li>
+										<li><a>拉拉裤</a></li>
+										<li><a>宝宝湿巾</a></li>
+										<li><a>德国爱他美</a></li>
+									</ul>
+									<div class="nav2extend clear">
+										<div class="nav2extend1 fl">
+											<div class="sellmilk">
+												<h3>奶粉专区</h3>
+												<ul class="clear">
+													<li class="pink">婴儿奶粉</li>
+													<li>成人奶粉</li>
+													<li class="pink">羊奶粉</li>
+													<li>特配奶粉</li>
+													<li class="pink">妈妈奶粉</li>
+													<li>成人奶粉</li>
+												</ul>
+											</div>
+	
+											<div class="sellzhiniaoku">
+												<h3>全球纸尿裤大牌</h3>
+												<ul class="clear">
+													<li class="pink">尤妮娃</li>
+													<li class="pink">花王</li>
+													<li class="pink">GOON大王天使</li>
+													<li>GOON大王维E</li>
+													<li class="pink">pampers帮宝适</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li class="pink">Mamypoke 妈咪宝贝</li>
+													<li>Libero丽贝乐</li>
+													<li>Baby Baby Happy 贝拉宝贝</li>
+													<li>Mamypoke 妈咪宝贝</li>
+													<li>BIOFITS 爱因舒坦 妈咪宝贝</li>
+													<li>BAMBO 斑博</li>
+												</ul>
+											</div>
+						
+										</div>
+										<div class="nav2extend2 fl">
+											<div class="sellpipi">
+												<h3>屁屁护理</h3>
+												<ul class="clear">
+													<li class="pink">纸尿裤</li>
+													<li>拉拉裤</li>
+													<li>隔尿垫/布尿垫</li>
+													<li class="pink">宝宝湿巾</li>
+												</ul>
+											</div>
+											
+											<div class="sellfamousemilk">
+												<h3>全球奶粉大牌</h3>
+												<ul class="clear">
+													<li class="pink">德国爱他美</li>
+													<li class="pink">德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li class="pink">荷兰Herobody</li>
+													<li class="pink">德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+													<li>德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+												</ul>
+											</div>
+	
+										</div>
+										<div class="nav2extend3 fl">
+											<div class="bandrecommend">
+												<h3>品牌热卖</h3>
+												<ul class="clear">
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell2.jpg"/></li>
+													<li><img src="img/images/hotsell3.jpg"/></li>
+													<li><img src="img/images/hotsell4.jpg"/></li>
+													<li><img src="img/images/hotsell5.jpg"/></li>
+													<li><img src="img/images/hotsell6.jpg"/></li>
+													<li><img src="img/images/hotsell7.jpg"/></li>
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell9.jpg"/></li>
+												</ul>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+	
+								<div class="angleright fr">
+									<i class="fa fa-angle-right"></i>
+								</div>
+							</div>
+							
+	<!--						产品6-->
+							<div class="product product6 clear">
+								<div class="productleft fl">
+									<ul class="clear">
+										<h3>奶粉/尿巾裤</h3>
+										<li><a>婴儿奶粉</a></li>
+										<li><a>羊奶粉</a></li>
+										<li><a>特配奶粉</a></li>
+										<li><a>拉拉裤</a></li>
+										<li><a>宝宝湿巾</a></li>
+										<li><a>德国爱他美</a></li>
+									</ul>
+									<div class="nav2extend clear">
+										<div class="nav2extend1 fl">
+											<div class="sellmilk">
+												<h3>奶粉专区</h3>
+												<ul class="clear">
+													<li class="pink">婴儿奶粉</li>
+													<li>成人奶粉</li>
+													<li class="pink">羊奶粉</li>
+													<li>特配奶粉</li>
+													<li class="pink">妈妈奶粉</li>
+													<li>成人奶粉</li>
+												</ul>
+											</div>
+	
+											<div class="sellzhiniaoku">
+												<h3>全球纸尿裤大牌</h3>
+												<ul class="clear">
+													<li class="pink">尤妮娃</li>
+													<li class="pink">花王</li>
+													<li class="pink">GOON大王天使</li>
+													<li>GOON大王维E</li>
+													<li class="pink">pampers帮宝适</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li class="pink">Mamypoke 妈咪宝贝</li>
+													<li>Libero丽贝乐</li>
+													<li>Baby Baby Happy 贝拉宝贝</li>
+													<li>Mamypoke 妈咪宝贝</li>
+													<li>BIOFITS 爱因舒坦 妈咪宝贝</li>
+													<li>BAMBO 斑博</li>
+												</ul>
+											</div>
+						
+										</div>
+										<div class="nav2extend2 fl">
+											<div class="sellpipi">
+												<h3>屁屁护理</h3>
+												<ul class="clear">
+													<li class="pink">纸尿裤</li>
+													<li>拉拉裤</li>
+													<li>隔尿垫/布尿垫</li>
+													<li class="pink">宝宝湿巾</li>
+												</ul>
+											</div>
+											
+											<div class="sellfamousemilk">
+												<h3>全球奶粉大牌</h3>
+												<ul class="clear">
+													<li class="pink">德国爱他美</li>
+													<li class="pink">德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li class="pink">荷兰Herobody</li>
+													<li class="pink">德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+													<li>德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+												</ul>
+											</div>
+	
+										</div>
+										<div class="nav2extend3 fl">
+											<div class="bandrecommend">
+												<h3>品牌热卖</h3>
+												<ul class="clear">
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell2.jpg"/></li>
+													<li><img src="img/images/hotsell3.jpg"/></li>
+													<li><img src="img/images/hotsell4.jpg"/></li>
+													<li><img src="img/images/hotsell5.jpg"/></li>
+													<li><img src="img/images/hotsell6.jpg"/></li>
+													<li><img src="img/images/hotsell7.jpg"/></li>
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell9.jpg"/></li>
+												</ul>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+	
+								<div class="angleright fr">
+									<i class="fa fa-angle-right"></i>
+								</div>
+							</div>
+							
+	<!--						产品7-->
+							<div class="product product7 clear">
+								<div class="productleft fl">
+									<ul class="clear">
+										<h3>奶粉/尿巾裤</h3>
+										<li><a>婴儿奶粉</a></li>
+										<li><a>羊奶粉</a></li>
+										<li><a>特配奶粉</a></li>
+										<li><a>拉拉裤</a></li>
+										<li><a>宝宝湿巾</a></li>
+										<li><a>德国爱他美</a></li>
+									</ul>
+									<div class="nav2extend clear">
+										<div class="nav2extend1 fl">
+											<div class="sellmilk">
+												<h3>奶粉专区</h3>
+												<ul class="clear">
+													<li class="pink">婴儿奶粉</li>
+													<li>成人奶粉</li>
+													<li class="pink">羊奶粉</li>
+													<li>特配奶粉</li>
+													<li class="pink">妈妈奶粉</li>
+													<li>成人奶粉</li>
+												</ul>
+											</div>
+	
+											<div class="sellzhiniaoku">
+												<h3>全球纸尿裤大牌</h3>
+												<ul class="clear">
+													<li class="pink">尤妮娃</li>
+													<li class="pink">花王</li>
+													<li class="pink">GOON大王天使</li>
+													<li>GOON大王维E</li>
+													<li class="pink">pampers帮宝适</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li class="pink">Mamypoke 妈咪宝贝</li>
+													<li>Libero丽贝乐</li>
+													<li>Baby Baby Happy 贝拉宝贝</li>
+													<li>Mamypoke 妈咪宝贝</li>
+													<li>BIOFITS 爱因舒坦 妈咪宝贝</li>
+													<li>BAMBO 斑博</li>
+												</ul>
+											</div>
+						
+										</div>
+										<div class="nav2extend2 fl">
+											<div class="sellpipi">
+												<h3>屁屁护理</h3>
+												<ul class="clear">
+													<li class="pink">纸尿裤</li>
+													<li>拉拉裤</li>
+													<li>隔尿垫/布尿垫</li>
+													<li class="pink">宝宝湿巾</li>
+												</ul>
+											</div>
+											
+											<div class="sellfamousemilk">
+												<h3>全球奶粉大牌</h3>
+												<ul class="clear">
+													<li class="pink">德国爱他美</li>
+													<li class="pink">德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li class="pink">荷兰Herobody</li>
+													<li class="pink">德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+													<li>德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+												</ul>
+											</div>
+	
+										</div>
+										<div class="nav2extend3 fl">
+											<div class="bandrecommend">
+												<h3>品牌热卖</h3>
+												<ul class="clear">
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell2.jpg"/></li>
+													<li><img src="img/images/hotsell3.jpg"/></li>
+													<li><img src="img/images/hotsell4.jpg"/></li>
+													<li><img src="img/images/hotsell5.jpg"/></li>
+													<li><img src="img/images/hotsell6.jpg"/></li>
+													<li><img src="img/images/hotsell7.jpg"/></li>
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell9.jpg"/></li>
+												</ul>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+	
+								<div class="angleright fr">
+									<i class="fa fa-angle-right"></i>
+								</div>
+							</div>
+							
+	<!--					产品8-->
+							<div class="product product8 last clear">
+								<div class="productleft fl">
+									<ul class="clear">
+										<h3>奶粉/尿巾裤</h3>
+										<li><a>婴儿奶粉</a></li>
+										<li><a>羊奶粉</a></li>
+										<li><a>特配奶粉</a></li>
+										<li><a>拉拉裤</a></li>
+										<li><a>宝宝湿巾</a></li>
+										<li><a>德国爱他美</a></li>
+									</ul>
+									<div class="nav2extend clear">
+										<div class="nav2extend1 fl">
+											<div class="sellmilk">
+												<h3>奶粉专区</h3>
+												<ul class="clear">
+													<li class="pink">婴儿奶粉</li>
+													<li>成人奶粉</li>
+													<li class="pink">羊奶粉</li>
+													<li>特配奶粉</li>
+													<li class="pink">妈妈奶粉</li>
+													<li>成人奶粉</li>
+												</ul>
+											</div>
+	
+											<div class="sellzhiniaoku">
+												<h3>全球纸尿裤大牌</h3>
+												<ul class="clear">
+													<li class="pink">尤妮娃</li>
+													<li class="pink">花王</li>
+													<li class="pink">GOON大王天使</li>
+													<li>GOON大王维E</li>
+													<li class="pink">pampers帮宝适</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li>singapore Huggles新加坡好奇</li>
+													<li class="pink">Mamypoke 妈咪宝贝</li>
+													<li>Libero丽贝乐</li>
+													<li>Baby Baby Happy 贝拉宝贝</li>
+													<li>Mamypoke 妈咪宝贝</li>
+													<li>BIOFITS 爱因舒坦 妈咪宝贝</li>
+													<li>BAMBO 斑博</li>
+												</ul>
+											</div>
+						
+										</div>
+										<div class="nav2extend2 fl">
+											<div class="sellpipi">
+												<h3>屁屁护理</h3>
+												<ul class="clear">
+													<li class="pink">纸尿裤</li>
+													<li>拉拉裤</li>
+													<li>隔尿垫/布尿垫</li>
+													<li class="pink">宝宝湿巾</li>
+												</ul>
+											</div>
+											
+											<div class="sellfamousemilk">
+												<h3>全球奶粉大牌</h3>
+												<ul class="clear">
+													<li class="pink">德国爱他美</li>
+													<li class="pink">德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li class="pink">荷兰Herobody</li>
+													<li class="pink">德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+													<li>德国爱他美</li>
+													<li>德国HIPP</li>
+													<li>德国TOpfer</li>
+													<li>荷兰Nutrilion</li>
+													<li>荷兰Herobody</li>
+												</ul>
+											</div>
+	
+										</div>
+										<div class="nav2extend3 fl">
+											<div class="bandrecommend">
+												<h3>品牌热卖</h3>
+												<ul class="clear">
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell2.jpg"/></li>
+													<li><img src="img/images/hotsell3.jpg"/></li>
+													<li><img src="img/images/hotsell4.jpg"/></li>
+													<li><img src="img/images/hotsell5.jpg"/></li>
+													<li><img src="img/images/hotsell6.jpg"/></li>
+													<li><img src="img/images/hotsell7.jpg"/></li>
+													<li><img src="img/images/hotsell1.jpg"/></li>
+													<li><img src="img/images/hotsell9.jpg"/></li>
+												</ul>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+	
+								<div class="angleright fr">
+									<i class="fa fa-angle-right"></i>
+								</div>
+							</div>
+						</div>
+
+						
+						
+					</div>
+	<!--				nav2导航结束-->
+				</div>
+
+			</div>
+<!--nav结束结束-->
+	</body>
+</html>

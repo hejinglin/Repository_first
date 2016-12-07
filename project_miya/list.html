@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+<!--css文件-->
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/list.css"/>
+
+
+<!--js文件	-->	
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.headerload').load('header.html',function(){
+				$('.allproduct').css({'dispaly':'none'});
+				$('.allclassify').find('i').css('display','inline-block');
+				
+				$('.allclassify').mouseenter(function(){
+					$('.allproduct').show().stop();
+				})
+				$('.allclassify').mouseleave(function(){
+					$('.allproduct').hide().stop();
+				})
+
+				$('.allproduct').mouseenter(function(){
+					$('.allproduct').show().stop();
+				})
+				$('.allproduct').mouseleave(function(){
+					$('.allproduct').hide().stop();
+				})
+
+				
+			});
+			$('.footerload').load('footer.html');
+			$('.ourAdvertisement').load('ourAdvertisement.html');
+			
+			//ajax请求数据
+			var page=function(_pageindex,_isgennerate){
+				$.ajax({
+					url:"data/goodlist.txt",
+					date:{'_':Math.random(),'_pageindex':_pageindex},
+					success:function(data){
+						console.log("请求成功");
+						var datas=typeof data=="string"? JSON.parse(data):data;
+//						console.log(datas);
+						//把之前的请求清空；
+						$('.goodsList').empty();
+						//请求第按钮添加页的数据
+						var goodList=datas["result"+_pageindex];
+						
+						//遍历数组对象拼接到页面上
+						$.each(goodList, function(index,val) {
+							$('.goodsList').append('<div class="good1"><dl><dt><img src='+val.src+'/></dt><dd ><div class="good1price clear"><span class="sign">￥</span><span class="newprice">'+val.newprice+'</span><em class="oldprice">￥'+val.oldprice
+							+'</em></div><div class="good1produce"><span>'+val.discount+'</span><em>'+val.title+'</em></div></dd></dl></div>')
+						});
+						callback();
+						//判断有多少页    请求到按钮
+						var pagecount=datas.totalCount%datas.pageSize>0? parseInt(datas.totalCount/datas.pageSize)+1 : pasrInt(datas.totalCount/datas.pageSize);
+						console.log(pagecount);
+						if(!_isgennerate){
+							return false;
+						}
+						for(var i=1;i<=pagecount;i++){
+							$('.btn').append("<span>"+i+"</span>");
+						}
+						
+					}
+				})
+			}
+			//调用ajax请求
+			page(1,true);
+			//分页刷新切换请求
+			$('.btn').on('click','span',function(){
+				console.log($(this).text());
+				page($(this).text());
+				$('.btn span').css({'background':'#FFFFFF','color':'#666666'});
+				$(this).css({'background':'#fa4b9b','color':'#FFFFFF'});
+			});
+			//调整最后一张图的边距
+			function callback(){
+				$.each($('.good1'),function(index,val){
+					if((index+1)%4==0){
+						$(this).css({'margin-right':0});
+					}
+				})
+				$('.goodsList dl').hover(function(){
+					$(this).css({'border':'1px solid #fb3892'});
+				},function(){
+					$(this).css({'border':'1px solid #FFFFFF'});
+				}).click(function(){
+					window.location.href="detail.html";
+				})
+			}
+
+
+		})
+	</script>
+	<body>
+			<div class="main">
+			<!--引入头部文件-->
+				<div class="headerload"></div>
+				<div class="ourAdvertisement"></div>
+				<div class="dried_fruit">
+					<div class="goodclassify"><span>商品分类</span><span class="sign">&gt;</span><span>"干果/果干"</span></div>
+					<div class="dried_fruitlist">
+						<div class="bander">
+							<ul class="clear">
+								<li class="first">品牌:</li>
+								<li><a href="#">科克兰 KIRKLAND Signature</a></li>
+								<li><a href="#">Ocean Spray</a></li>
+								<li><a href="#">莫纳罗 MAUNA LOA</a></li>
+								<li><a href="#">U100</a></li>
+								<li><a href="#">沙巴哇</a></li>
+							</ul>
+
+						</div>
+						<div class="place">
+							<ul class="clear">
+								<li class="first">产地:</li>
+								<li><a href="#">中国</a></li>
+								<li><a href="#">中国台湾</a></li>
+								<li><a href="#">中国香港</a></li>
+								<li><a href="#">其他</a></li>
+								<li><a href="#">加拿大</a></li>
+								<li><a href="#">土耳其</a></li>
+								<li><a href="#">新西兰</a></li>
+								<li><a href="#">泰国</a></li>
+								<li><a href="#">澳大利亚</a></li>
+								<li><a href="#">美国</a></li>
+								<li><a href="#">菲律宾</a></li>
+								<li><a href="#">越南</a></li>
+								<li><a href="#">韩国</a></li>								
+							</ul>
+						</div>
+						<div class="price">
+							<ul class="clear">
+								<li class="first">价格:</li>
+								<li><a href="#">0-50</a></li>
+								<li><a href="#">50-280</a></li>
+								<li><a href="#">280-610</a></li>								
+							</ul>
+						</div>
+					</div>
+					
+					<div class="sort clear">
+						<div class="sortleft fl">
+							<ul class="clear">
+								<li class="text pink"><a href="#">人气</a></li>
+								<li class="text"><a href="#">销量</a></li>
+								<li class="text"><a href="#">新品</a></li>
+								<li class="text"><a href="#">价格</a></li>
+								<li class="interval clear">
+									<input type="text" name="pricebegin" id="pricebegin" value="￥" class="fl"/>
+									<div class="content fl">-</div>
+									<input type="text" name="priceend" id="priceend" value="￥" class="fl"/>
+								</li>
+								<li class="showreserve"><input type="checkbox" name="checkbox1" id="checkbox1" value="" /><span>只显示有货</span></li>
+							</ul>
+						</div>
+						<div class="sortright fr"><span>共计</span><em class="pink">413</em><span>个商品</span></div>
+					</div>
+					
+					<div class="goodsList clear">
+						<!--<div class="good1">
+							<dl>
+								<dt><img src="img/listimg/listpicture1.jpg"/></dt>
+								<dd >
+									<div class="good1price clear"><span class="sign">￥</span><span class="newprice">17.00</span><em class="oldprice">￥26.00</em></div>
+									<div class="good1produce"><span>6.6折/</span><em> U100 蜜桃干 45g</em></div>
+								</dd>
+							</dl>
+						</div>-->
+
+					</div>
+<!--				<div class="btn"><span>1</span><span>2</span><span>3</span><span>4</span></div>-->
+					<div class="btn"></div>
+				</div>			
+							
+						
+			<!--导入footer-->
+				<div class="footerload"></div>
+			</div>
+	</body>
+</html>
